@@ -1,6 +1,6 @@
 body {
     background-color: blue;
-    
+    align: center;
 }
 
 #container {
@@ -14,12 +14,15 @@ body {
 
 #game {
     grid-area: game;
+    border: 2px solid black;
 }
 
 #top {
     grid-area: top;
+    border: 2px solid black;
 }
 
 #bottom { 
     grid-area: bottom;
+    border: 2px solid black;
 }
