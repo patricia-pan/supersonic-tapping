@@ -15,10 +15,11 @@ https://www.notion.so/patriciapan/Supersonics-P1-Pitch-Guidelines-5f6c39c888a749
 https://github.com/melissay94/gradies-grueling-grind/blob/master/README.md
 
 ## Mastering Markdowns
+https://guides.github.com/features/mastering-markdown/
 
 ## Royalty-free music
  https://incompetech.com/music/royalty-free/music.html
 
-## Websites for desigining wireframes
+## Websites for designing wireframes
 https://app.diagrams.net/
 figma.com

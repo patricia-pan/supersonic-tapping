@@ -1,0 +1,25 @@
+body {
+    background-color: blue;
+    
+}
+
+#container {
+    display: grid;
+    grid-template-columns: 2fr;
+    grid-template-rows: 1fr 2fr 1fr;
+    grid-template-areas:    "top"
+                            "game"
+                            "bottom";
+}
+
+#game {
+    grid-area: game;
+}
+
+#top {
+    grid-area: top;
+}
+
+#bottom { 
+    grid-area: bottom;
+}
