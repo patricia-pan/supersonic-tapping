@@ -11,25 +11,36 @@ body {
 }
 
 #container {
+    background-color: pink;
+    border: 1px dashed magenta;
+    margin: 0 auto; /* Centers everything inside the container, needs to be used with a width value. */
+    max-width: 60em; /* So that gameplay screen doesn't take up entire width. */
+    text-align: center;
+    
     display: grid;
+    grid-gap: 0em; /* Margin between grid areas */
     grid-template-columns: 2fr;
-    grid-template-rows: 1fr 2fr 1fr;
+    grid-template-rows: 1fr 7fr 1fr;
     grid-template-areas:    "top"
                             "game"
                             "bottom";
 }
 
-#game {
-    grid-area: game;
+aside#top {
     border: 2px solid black;
-}
-
-#top {
+    
     grid-area: top;
-    border: 2px solid black;
+}
+canvas#game {
+    background-color: #222;
+    height: 60vh;
+    border: 2px dashed black;
+    width: 99%; /* Having trouble having it fit inside of my container. How do I have everything line up and what does each line of CSS due to each item? */
+    grid-area: game;
 }
 
-#bottom { 
-    grid-area: bottom;
+aside#bottom {
     border: 2px solid black;
+
+    grid-area: bottom;
 }
