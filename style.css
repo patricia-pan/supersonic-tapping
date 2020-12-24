@@ -20,7 +20,7 @@ body {
     display: grid;
     grid-gap: 0em; /* Margin between grid areas */
     grid-template-columns: 2fr;
-    grid-template-rows: 1fr 7fr 1fr;
+    grid-template-rows: 1fr 10fr 1fr;
     grid-template-areas:    "top"
                             "game"
                             "bottom";
@@ -28,19 +28,17 @@ body {
 
 aside#top {
     border: 2px solid black;
-    
     grid-area: top;
 }
 canvas#game {
     background-color: #222;
-    height: 60vh;
+    height: 100%;
     border: 2px dashed black;
-    width: 99%; /* Having trouble having it fit inside of my container. How do I have everything line up and what does each line of CSS due to each item? */
+    width: 950px; /* Having trouble having it fit inside of my container. How do I have everything line up and what does each line of CSS due to each item? */
     grid-area: game;
 }
 
 aside#bottom {
     border: 2px solid black;
-
     grid-area: bottom;
 }

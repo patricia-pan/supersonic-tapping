@@ -23,3 +23,6 @@ https://guides.github.com/features/mastering-markdown/
 ## Websites for designing wireframes
 https://app.diagrams.net/
 figma.com
+
+## Credit for svg arrows
+http://ephraim-doorcounty.com/wp-content/uploads/intense-cache/icons/plugin/font-awesome/
