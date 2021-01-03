@@ -22,8 +22,8 @@
 // Have things spawn based on the arrowDirections list. 
 ////////////////////////////////////////////////////
 
+// SVG = scalable vector graphics for arrow image. 
 
-let movementDisplay = movement
 
 // Assign dimensional attributes for canvas#game.
 game.setAttribute('width', getComputedStyle(game)['width'])
@@ -31,62 +31,87 @@ game.setAttribute('height', getComputedStyle(game)['height'])
 
 // Context object gets created when we have the canvas tag.
 let ctx = game.getContext('2d')
-let arrows = [] // Array of arrow objects. 
-let arrowDirections = [0, ['up', 'right'], 0, 'down', 0, 'left', ] // Arrow choreography that is specific to each song + difficulty.
-let time = 0
+let arrows = [] // Array of arrow objects that are on screen. 
+let arrowDirections = [[], ['up', 'right'], ['down'], []] // Hard-coded arrow choreography that is specific to each song + difficulty. One interval for looping through indices every 1000ms in arrowChoreography to push an object into arrows array. 
+let i = 0 // For reading choreography and to iterate through arrowDirections.
 let health = 50
+let isGameOver = false 
+
+
+function Arrow(arrowDirection) {
+    switch(arrowDirection) {
+        case 'left':
+            this.x = 5
+            this.y = 5
+            this.color = 'red'
+        case 'right':
+            this.x = 100
+            this.y = 100
+            this.color = 'blue'
+        case 'up':
+            this.x = 300
+            this.y = 300
+            this.color = 'purple'
+        case 'down':
+            this.x = 500
+            this.y = 500
+            this.color = 'green'
+    this.render = function() {
+        ctx.fillStyle = this.color
+        ctx.fillRect(this.x, this.y, this.width, this.height)
+    }
+    drawImg(this.x, this.y, this.imgSrc) // pseudocode
+    // this.render = function() {
+    //     ctx.fillStyle = this.color
+    //     ctx.fillRect(this.x, this.y, this.width, this.height)
+    // }
+    i++
+    }
+}
+
+function createArrow() {
+   // arrows.push(Arrow(arrowDirections[i])) // Create an arrow object in Arrow constructor function. Add object to arrows array.
+   // i += 1 // Move on to the next choreographed arrowset. 
+}
+
+let hitBox = {
+    x: 50,
+    y: 50,
+    color: 'orange',
+    width: 100,
+    height: 60,
+    render: function() {
+        ctx.fillStyle = this.color
+        ctx.fillRect(this.x, this.y, this.width, this.height)
+    }
+}
+
+hitBox.render()
+
+function detectHit() {
+    // for (let i = 0; i < arrows.length; i++ ) {
+    }
+    /* if (hero.x + hero.width > ogre.x && 
+        hero.x < ogre.x + ogre.width &&
+        hero.y < ogre.y + ogre.height &&
+        hero.y + hero.height > ogre.y) { 
+            ogre.alive = false */ 
 
 let gameLoop = () => {
     ctx.clearRect(0, 0, game.width, game.height) // Clear the canvas.
-    collisionBar.render() // Render the top part of the canvas where the arrows get hit.
-    arrowMover(arrows) // Move the arrows up.
-    arrowRenderer(arrows) // Render current arrows.
-}
-
-function arrowRenderer(arrows) {
-    for (let i = 0; i < arrows.length; i++) {
-        if (arrows[i].y <= 0 ) { // If off the screen.
-            arrows.shift() // Removes first element i.e. oldest element. 
-            i -= 1 // Because we popped an element off from the front and we want to look at the next element.
-        }
-        else {
-
-        }
-        
+    // ctx.rotate(20 * Math.PI / 180); to rotate something 20 degrees clockwise. https://www.w3schools.com/tags/canvas_rotate.asp
+    for (arrow in arrows) {
+        arrow.y -= 5 // Move each arrow up the screen.
+        arrow.render() 
     }
-
+    hitBox.render() // Render the top part of the canvas where the arrows get hit.
 }
 
-function arrowMover(arrows) {
-    for (let object in arrows) {
+let arrowInterval = setInterval(createArrow, 1000) // Creating a new arrow every 1 second. 
+let gameInterval = setInterval(gameLoop, 500) // Game refreshes every 500 ms, or half second.
+let stop = () => clearInterval(gameInterval)
 
-    }
-
-}
-
-function arrowGenerator(arrowDirection, color, velocity) {
-    switch(arrowDirection) {
-        case 'left':
-            this.x = 0
-            this.y = 0
-        case 'right':
-            this.x = 0
-            this.y = 0
-        case 'up':
-            this.x = 0
-            this.y = 0
-        case 'down':
-            this.x = 0
-            this.y = 0
-    }
-}
-
-// arrowDirections = ['left', 'right', 0, 'leftX', 'upX']
-// arrowColors = []
-// arrowVelocities []
-
-// arrows = [[{}, {}], {}]
-
+//// Watch out for nested for loops when we have setIntervals firing at the same time. 
 
 function animateArrows(arrows) {
 
@@ -99,8 +124,6 @@ function destroyArrows(arrows) {
 
 }
 
-let gameInterval = setInterval(gameLoop, 500) // Game refreshes every 500 ms, or half second.
-let stop = () => clearInterval(gameInterval)
 
 
 
@@ -108,6 +131,8 @@ let stop = () => clearInterval(gameInterval)
 
 /* MVP:
 
+- Splash screen
+- Results screen
 - 1 player
 - 1 difficulty for 1 song
 - Have arrows scroll up and disappear when hit at the right within 70% of the collision bar and the correct aswd key for the arrow is pressed.

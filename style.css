@@ -4,7 +4,7 @@ html, body {
 }
 
 body {
-    background-color: blue;
+    background-color: lightblue;
     background-repeat: space;
     background-size: cover;
     text-align: center;
@@ -32,9 +32,9 @@ aside#top {
 }
 canvas#game {
     background-color: #222;
-    height: 100%;
+    height: 500px;
     border: 2px dashed black;
-    width: 950px; /* Having trouble having it fit inside of my container. How do I have everything line up and what does each line of CSS due to each item? */
+    width: 700px; /* Having trouble having it fit inside of my container. How do I have everything line up and what does each line of CSS due to each item? */
     grid-area: game;
 }
 
