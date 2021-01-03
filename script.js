@@ -75,11 +75,11 @@ function createArrow() {
 }
 
 let hitBox = {
-    x: 50,
-    y: 50,
+    x: 10,
+    y: 10,
     color: 'orange',
-    width: 100,
-    height: 60,
+    width: 680,
+    height: 60, // Need to make this slightly bigger than the size of the arrow svg.
     render: function() {
         ctx.fillStyle = this.color
         ctx.fillRect(this.x, this.y, this.width, this.height)
