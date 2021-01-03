@@ -57,22 +57,23 @@ function Arrow(arrowDirection) {
             this.x = 500
             this.y = 500
             this.color = 'green'
+            this.img = '/down' // TO DO: Figure out how to extract specific image.
     this.render = function() {
         ctx.fillStyle = this.color
         ctx.fillRect(this.x, this.y, this.width, this.height)
+        // TO DO: Need to eventually replace this code with drawing an image. 
     }
-    drawImg(this.x, this.y, this.imgSrc) // pseudocode
-    // this.render = function() {
-    //     ctx.fillStyle = this.color
-    //     ctx.fillRect(this.x, this.y, this.width, this.height)
-    // }
-    i++
     }
 }
 
-function createArrow() {
-   arrows.push(Arrow(arrowDirections[i])) // Create an arrow object in Arrow constructor function. Add object to arrows array.
-   i += 1 // Move on to the next choreographed arrowset. 
+function createArrow() { // Creates arrow objects from arrowDirections choreography.
+    console.log(i, arrowDirections[i])
+    for (let j = 0; j < arrowDirections[i].length; j++) {
+        arrows.push(new Arrow(arrowDirections[i][j])) // Create an arrow object in Arrow constructor function. Add object to arrows array.
+    } 
+    if (i < arrowDirections.length - 1) {
+        i += 1 // Move on to the next choreographed arrowset. 
+    }
 }
 
 let hitBox = {
@@ -101,13 +102,18 @@ function detectHit() {
 let gameLoop = () => {
     ctx.clearRect(0, 0, game.width, game.height) // Clear the canvas.
     // ctx.rotate(20 * Math.PI / 180); to rotate something 20 degrees clockwise. https://www.w3schools.com/tags/canvas_rotate.asp
-    if (arrows.length != 0 && arrows[0].y < -imgHeight) {
-        arrows.shift() // Remove oldest arrow when it is entirely off-screen.
+    if (arrows.length !== 0) {
+        if (arrows[0].y < -imgHeight) {
+           arrows.shift() // Remove oldest arrow when it is entirely off-screen.
+        }
     }
-    if (arrows.length != 0 && arrows[0].y < -imgHeight) {
-        arrows.shift() // There might be two arrows at the same y value in a combo.
-    } 
-    for (arrow in arrows) {
+    if (arrows.length !== 0) {
+        if (arrows[0].y < -imgHeight) {
+            arrows.shift() // // There might be two arrows at the same y value in a combo.
+        }
+    }
+
+    for (arrow in arrows) { // TO DO: CHANGE THIS TO ITERATOR INSTEAD OF ARROW IN ARROWS.
         arrow.y -= 5 // Move each arrow up the screen.
         arrow.render() 
     }
@@ -116,7 +122,10 @@ let gameLoop = () => {
 
 let arrowInterval = setInterval(createArrow, 1000) // Creating a new arrow every 1 second. 
 let gameInterval = setInterval(gameLoop, 500) // Game refreshes every 500 ms, or half second.
-let stop = () => clearInterval(gameInterval)
+let stop = () => {
+    clearInterval(gameInterval)
+    clearInterval(arrowInterval)
+} 
 
 //// Watch out for nested for loops when we have setIntervals firing at the same time. 
 
