@@ -31,6 +31,7 @@ game.setAttribute('height', getComputedStyle(game)['height'])
 
 // Context object gets created when we have the canvas tag.
 let ctx = game.getContext('2d')
+let imgHeight = 40; // Width of each arrow image. 
 let arrows = [] // Array of arrow objects that are on screen. 
 let arrowDirections = [[], ['up', 'right'], ['down'], []] // Hard-coded arrow choreography that is specific to each song + difficulty. One interval for looping through indices every 1000ms in arrowChoreography to push an object into arrows array. 
 let i = 0 // For reading choreography and to iterate through arrowDirections.
@@ -70,8 +71,8 @@ function Arrow(arrowDirection) {
 }
 
 function createArrow() {
-   // arrows.push(Arrow(arrowDirections[i])) // Create an arrow object in Arrow constructor function. Add object to arrows array.
-   // i += 1 // Move on to the next choreographed arrowset. 
+   arrows.push(Arrow(arrowDirections[i])) // Create an arrow object in Arrow constructor function. Add object to arrows array.
+   i += 1 // Move on to the next choreographed arrowset. 
 }
 
 let hitBox = {
@@ -100,6 +101,12 @@ function detectHit() {
 let gameLoop = () => {
     ctx.clearRect(0, 0, game.width, game.height) // Clear the canvas.
     // ctx.rotate(20 * Math.PI / 180); to rotate something 20 degrees clockwise. https://www.w3schools.com/tags/canvas_rotate.asp
+    if (arrows.length != 0 && arrows[0].y < -imgHeight) {
+        arrows.shift() // Remove oldest arrow when it is entirely off-screen.
+    }
+    if (arrows.length != 0 && arrows[0].y < -imgHeight) {
+        arrows.shift() // There might be two arrows at the same y value in a combo.
+    } 
     for (arrow in arrows) {
         arrow.y -= 5 // Move each arrow up the screen.
         arrow.render() 
@@ -113,18 +120,12 @@ let stop = () => clearInterval(gameInterval)
 
 //// Watch out for nested for loops when we have setIntervals firing at the same time. 
 
-function animateArrows(arrows) {
-
-}
-
 function destroyArrows(arrows) {
     // Destroy arrows if missed arrows go off-screen.
 
     // Destroy arrows if they are 'hit' within their collision boxes. 
 
 }
-
-
 
 
 
