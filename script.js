@@ -113,9 +113,9 @@ let gameLoop = () => {
         }
     }
 
-    for (arrow in arrows) { // TO DO: CHANGE THIS TO ITERATOR INSTEAD OF ARROW IN ARROWS.
-        arrow.y -= 5 // Move each arrow up the screen.
-        arrow.render() 
+    for (let j = 0; j < arrows.length; j++) { // TO DO: CHANGE THIS TO ITERATOR INSTEAD OF ARROW IN ARROWS.
+        arrows[j].y -= 5 // Move each arrow up the screen.
+        arrows[j].render() 
     }
     hitBox.render() // Render the top part of the canvas where the arrows get hit.
 }
