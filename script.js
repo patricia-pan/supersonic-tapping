@@ -112,7 +112,6 @@ let gameLoop = () => {
             arrows.shift() // // There might be two arrows at the same y value in a combo.
         }
     }
-a
     for (let j = 0; j < arrows.length; j++) { // TO DO: CHANGE THIS TO ITERATOR INSTEAD OF ARROW IN ARROWS.
         arrows[j].y -= 5 // Move each arrow up the screen.
         arrows[j].render() 
