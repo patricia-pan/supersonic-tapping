@@ -6,9 +6,9 @@ let detectArrowHit = () => {
                 continue // Exit this iteration of the loop if the arrow has already been hit.
             }
         // Arrow is same height as hitBox so we can compare y values instead of (y + height).
-        else if (arrows[j].y < hitBox.y + 10 && // Tolerance of 10 pixels. 
-            arrows[j].y > 0) { // hitBox is drawn at y = 10.
-                arrows[j].img = upArrowGhostImg
+        else if (arrows[j].y < hitBox.y + 10 && // Tolerance of 10 pixels; hitBox is drawn at y = 10.
+            arrows[j].y > 0) { 
+                // arrows[j].img = upArrowGhostImg
                 arrows[j].live = false
                 // switch(arrows[j].direction) {
                 //     case 'left': 
@@ -25,27 +25,17 @@ let detectArrowHit = () => {
                 //         break
                 // }
                 // Below code didn't work, also had trouble doing string interpolation.
-                // arrows[j].img = (arrows[j].direction + 'ArrowGhostImg')
+                arrows[j].img.src = `./img/${arrows[j].direction}ArrowGhost.png`
                 healthScore += 1
             }
-            else if (arrows[j].y < 0 && arrows[j].live == true) { // If the arrow has passed the hitBox's top edge (@ 10px) by 10px (@ 0px).
-            arrows[j].live = false
+            else if (arrows[j].y <= 0) { // If the arrow has passed the hitBox + tolerance.
             healthScore -= 1
         }
     }
 }
-    
-    // If the hero's right > ogre's left, AND hero's left < ogre's right, then there's a collision.
-    // if (hero.x + hero.width > ogre.x && 
-    //     hero.x < ogre.x + ogre.width &&
-    //     hero.y < ogre.y + ogre.height &&
-    //     hero.y + hero.height > ogre.y) { 
-    //         ogre.alive = false
-    //         document.querySelector('#btm-right > h2').innerText = 'You Killed Shrek'
-    //     }
-    // Need to update health bar as well.
 
 let hitHandler = e => {
+    song.play()
     switch(e.key) {
         case 'w': 
             detectArrowHit()

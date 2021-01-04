@@ -41,9 +41,12 @@ const downArrowGhostImg = document.getElementById('down-arrow-ghost')
 const upArrowGhostImg = document.getElementById('up-arrow-ghost')
 const rightArrowGhostImg = document.getElementById('right-arrow-ghost')
 
-
 const imgHeight = 60 // img of DDR arrow. For reference, hitBox's height is 60px.
 const imgWidth = imgHeight // Square image. 
+
+const song = document.createElement('audio')
+song.src = './audio/voxel-revolution-by-kevin-macleod.mp3'
+
 
 let arrows = [] // Array of arrow objects that are presently on screen. 
 let arrowDirections = [['left'], ['up', 'right'], ['down'], []] // Hard-coded arrow choreography for each song + difficulty.
@@ -169,6 +172,7 @@ let gameInterval = setInterval(gameLoop, gameSpeed)
 let stop = () => {
     clearInterval(gameInterval) // Stops game from refreshing and animating arrows upward. 
     clearInterval(arrowInterval) // Stops arrow objects from being cerated from arrowDirections (nested array of strings) and into arrows array (array of objects). 
+    song.pause()
 } 
 
 //// Watch out for nested for loops when we have setIntervals firing at the same time. 
