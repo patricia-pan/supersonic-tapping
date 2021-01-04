@@ -35,7 +35,8 @@ const leftArrowImg = document.getElementById('left-arrow')
 const downArrowImg = document.getElementById('down-arrow')
 const upArrowImg = document.getElementById('up-arrow')
 const rightArrowImg = document.getElementById('right-arrow')
-const imgHeight = 60; // Width of each arrow image. hitBox's height is 60px.
+const imgHeight = 60 // Width of each arrow image. hitBox's height is 60px.
+const imgWidth = imgHeight
 
 let arrows = [] // Array of arrow objects that are on screen. 
 let arrowDirections = [['left'], ['up', 'right'], ['down'], []] // Hard-coded arrow choreography that is specific to each song + difficulty. One interval for looping through indices every 1000ms in arrowChoreography to push an object into arrows array. 
@@ -47,22 +48,22 @@ let isGameOver = false
 function Arrow(arrowDirection) {
     switch(arrowDirection) {
         case 'left':
-            this.x = 50 
+            this.x = 215
             this.y = 500
             this.img = leftArrowImg
             break
         case 'down':
-            this.x = 110 // Each arrow has a width of 40px, and 20px of horizontal space betwixt arrows.
+            this.x = 215 + imgWidth + 10 // 285. For a margin of 5 px between each arrow. 
             this.y = 500
             this.img = downArrowImg
             break
         case 'up':
-            this.x = 170
+            this.x = 355
             this.y = 500
             this.img = upArrowImg
             break
         case 'right':
-            this.x = 230
+            this.x = 425
             this.y = 500
             this.img = rightArrowImg
             break
@@ -98,6 +99,18 @@ let hitBox = {
     }
 }
 
+let halfHitBox = {
+    x: 10,
+    y: 10,
+    color: 'purple',
+    width: 340,
+    height: 60, // Need to make this slightly bigger than the size of the arrow svg.
+    render: function() {
+        ctx.fillStyle = this.color
+        ctx.fillRect(this.x, this.y, this.width, this.height)
+    }
+}
+
 hitBox.render()
 
 function detectHit() {
@@ -123,6 +136,7 @@ let gameLoop = () => {
         }
     }
     hitBox.render() // Render the top part of the canvas where the arrows get hit.
+    halfHitBox.render()
     for (let j = 0; j < arrows.length; j++) { // TO DO: CHANGE THIS TO ITERATOR INSTEAD OF ARROW IN ARROWS.
         arrows[j].y -= 1 // Move each arrow up the screen.
         arrows[j].render()
