@@ -35,13 +35,20 @@ const leftArrowImg = document.getElementById('left-arrow')
 const downArrowImg = document.getElementById('down-arrow')
 const upArrowImg = document.getElementById('up-arrow')
 const rightArrowImg = document.getElementById('right-arrow')
+
+const leftArrowGhostImg = document.getElementById('left-arrow-ghost')
+const downArrowGhostImg = document.getElementById('down-arrow-ghost')
+const upArrowGhostImg = document.getElementById('up-arrow-ghost')
+const rightArrowGhostImg = document.getElementById('right-arrow-ghost')
+
+
 const imgHeight = 60 // img of DDR arrow. For reference, hitBox's height is 60px.
 const imgWidth = imgHeight // Square image. 
 
 let arrows = [] // Array of arrow objects that are presently on screen. 
-let arrowDirections = [['left'], ['up', 'right'], ['down'], []] // Hard-coded arrow choreography that is specific to each song + difficulty.
+let arrowDirections = [['left'], ['up', 'right'], ['down'], []] // Hard-coded arrow choreography for each song + difficulty.
 let i = 0 // For reading choreography (to iterate through arrowDirections.)
-let healthScore = 90 // Out of 100.
+let healthScore = 50 // Out of 100.
 let health = document.getElementById('health')
 let isGameOver = false 
 
@@ -49,44 +56,49 @@ let hitBox = {
     x: 10,
     y: 10,
     color: 'orange',
+    height: imgHeight, // 60px.
+    margin: 10, 
     width: 680,
-    height: 60, // Need to make this slightly bigger than the size of the arrow svg.
     render: function() {
         ctx.fillStyle = this.color
         ctx.fillRect(this.x, this.y, this.width, this.height)
-        ctx.drawImage(downArrowImg, 285, 10, imgWidth, imgHeight) // Down ghost.
-        ctx.drawImage(leftArrowImg, 215, 10, imgWidth, imgHeight) // Left ghost.
-        ctx.drawImage(upArrowImg, 355, 10, imgWidth, imgHeight) // Up ghost.
-        ctx.drawImage(rightArrowImg, 425, 10, imgWidth, imgHeight) // Right ghost.
+        ctx.drawImage(downArrowImg, 285, 10, imgWidth, imgHeight) 
+        ctx.drawImage(leftArrowImg, 215, 10, imgWidth, imgHeight) 
+        ctx.drawImage(upArrowImg, 355, 10, imgWidth, imgHeight) 
+        ctx.drawImage(rightArrowImg, 425, 10, imgWidth, imgHeight) 
     }
 }
 
 function Arrow(arrowDirection) { // To create new arrow objects from arrowDirections choreography.
     switch(arrowDirection) {
         case 'left':
-            this.x = 215
+        this.direction = 'left'    
+        this.x = 215
             this.y = 500
             this.img = leftArrowImg
             break
         case 'down':
+            this.direction = 'down'
             this.x = 215 + imgWidth + 10 // 285. For a margin of 5 px between each arrow. 
             this.y = 500
             this.img = downArrowImg
             break
         case 'up':
+            this.direction = 'up'
             this.x = 355
             this.y = 500
             this.img = upArrowImg
             break
         case 'right':
+            this.direction = 'right'
             this.x = 425
             this.y = 500
             this.img = rightArrowImg
             break
         default: 
-            console.log('This doesn\'t do anything!')
+            console.log('Nothing happens.')
         }
-        this.width = imgHeight // Square image.
+        this.width = imgWidth 
         this.height = imgHeight
         this.render = function() {
         ctx.drawImage(this.img, this.x, this.y, this.width, this.height)
@@ -94,7 +106,6 @@ function Arrow(arrowDirection) { // To create new arrow objects from arrowDirect
 }
 
 function createArrow() { // Create arrow object from arrowDirections choreography.
-    console.log(i, arrowDirections[i])
     for (let j = 0; j < arrowDirections[i].length; j++) {
         arrows.push(new Arrow(arrowDirections[i][j]))
     } 
@@ -109,13 +120,12 @@ let removeOffScreenArrows = () => {
            arrows.shift() // Remove oldest arrow when it is entirely off-screen.
         }
     }
-    if (arrows.length !== 0) {  // There might be a combo of two arrows with the same y value, so we do this twice.
+    if (arrows.length !== 0) {  // There might be a combo of two arrows with the same y value.
         if (arrows[0].y < -imgHeight) {
             arrows.shift()
         }
     }
 }
-
 
 
 // BELOW IS FOR CODING PURPOSES ONLY, TO VISUALIZE MIDPOINT OF GAME. DELETE ONCE DONE.
@@ -133,8 +143,8 @@ let removeOffScreenArrows = () => {
 
 let gameLoop = () => {
     ctx.clearRect(0, 0, game.width, game.height) // Clear the canvas.
-    detectHit() // detectHit.js
-    removeOffScreenArrows() // detectHit.js
+    removeOffScreenArrows() 
+    detectArrowHit()
     health.style.width = healthScore + 'px' // Update health bar.
     hitBox.render()
     // halfHitBox.render() // DELETE THIS ONCE COMPLETE. FOR VISUALIZING HALFWAY POINT ANYWAY.
