@@ -98,6 +98,7 @@ function Arrow(arrowDirection) { // To create new arrow objects from arrowDirect
         default: 
             console.log('Nothing happens.')
         }
+        this.live = true // Now live, on screen.
         this.width = imgWidth 
         this.height = imgHeight
         this.render = function() {
