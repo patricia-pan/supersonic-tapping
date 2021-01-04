@@ -31,7 +31,7 @@ game.setAttribute('height', getComputedStyle(game)['height'])
 
 // Context object gets created when we have the canvas tag.
 let ctx = game.getContext('2d')
-let imgHeight = 40; // Width of each arrow image. 
+let imgHeight = 40; // Width of each arrow image. Should be approximately same height as hitBox.
 let arrows = [] // Array of arrow objects that are on screen. 
 let arrowDirections = [[], ['up', 'right'], ['down'], []] // Hard-coded arrow choreography that is specific to each song + difficulty. One interval for looping through indices every 1000ms in arrowChoreography to push an object into arrows array. 
 let i = 0 // For reading choreography and to iterate through arrowDirections.
@@ -42,19 +42,19 @@ let isGameOver = false
 function Arrow(arrowDirection) {
     switch(arrowDirection) {
         case 'left':
-            this.x = 5
-            this.y = 5
+            this.x = 50 
+            this.y = 500
             this.color = 'red'
-        case 'right':
-            this.x = 100
-            this.y = 100
+        case 'down':
+            this.x = 110 // Each arrow has a width of 40px, and 20px of horizontal space betwixt arrows.
+            this.y = 500
             this.color = 'blue'
         case 'up':
-            this.x = 300
-            this.y = 300
+            this.x = 170
+            this.y = 500
             this.color = 'purple'
-        case 'down':
-            this.x = 500
+        case 'right':
+            this.x = 230
             this.y = 500
             this.color = 'green'
             this.img = '/down' // TO DO: Figure out how to extract specific image.
@@ -112,7 +112,7 @@ let gameLoop = () => {
             arrows.shift() // // There might be two arrows at the same y value in a combo.
         }
     }
-
+a
     for (let j = 0; j < arrows.length; j++) { // TO DO: CHANGE THIS TO ITERATOR INSTEAD OF ARROW IN ARROWS.
         arrows[j].y -= 5 // Move each arrow up the screen.
         arrows[j].render() 
