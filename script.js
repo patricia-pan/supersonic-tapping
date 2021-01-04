@@ -30,10 +30,15 @@ game.setAttribute('width', getComputedStyle(game)['width'])
 game.setAttribute('height', getComputedStyle(game)['height'])
 
 // Context object gets created when we have the canvas tag.
-let ctx = game.getContext('2d')
-let imgHeight = 40; // Width of each arrow image. Should be approximately same height as hitBox.
+const ctx = game.getContext('2d')
+const leftArrowImg = document.getElementById('left-arrow')
+const downArrowImg = document.getElementById('down-arrow')
+const upArrowImg = document.getElementById('up-arrow')
+const rightArrowImg = document.getElementById('right-arrow')
+const imgHeight = 60; // Width of each arrow image. hitBox's height is 60px.
+
 let arrows = [] // Array of arrow objects that are on screen. 
-let arrowDirections = [[], ['up', 'right'], ['down'], []] // Hard-coded arrow choreography that is specific to each song + difficulty. One interval for looping through indices every 1000ms in arrowChoreography to push an object into arrows array. 
+let arrowDirections = [['left'], ['up', 'right'], ['down'], []] // Hard-coded arrow choreography that is specific to each song + difficulty. One interval for looping through indices every 1000ms in arrowChoreography to push an object into arrows array. 
 let i = 0 // For reading choreography and to iterate through arrowDirections.
 let health = 50
 let isGameOver = false 
@@ -44,25 +49,30 @@ function Arrow(arrowDirection) {
         case 'left':
             this.x = 50 
             this.y = 500
-            this.color = 'red'
+            this.img = leftArrowImg
+            break
         case 'down':
             this.x = 110 // Each arrow has a width of 40px, and 20px of horizontal space betwixt arrows.
             this.y = 500
-            this.color = 'blue'
+            this.img = downArrowImg
+            break
         case 'up':
             this.x = 170
             this.y = 500
-            this.color = 'purple'
+            this.img = upArrowImg
+            break
         case 'right':
             this.x = 230
             this.y = 500
-            this.color = 'green'
-            this.img = '/down' // TO DO: Figure out how to extract specific image.
-    this.render = function() {
-        ctx.fillStyle = this.color
-        ctx.fillRect(this.x, this.y, this.width, this.height)
-        // TO DO: Need to eventually replace this code with drawing an image. 
-    }
+            this.img = rightArrowImg
+            break
+        default: 
+            console.log('This doesn\'t do anything!')
+        }
+        this.width = imgHeight // Square image.
+        this.height = imgHeight
+        this.render = function() {
+        ctx.drawImage(this.img, this.x, this.y, this.width, this.height)
     }
 }
 
@@ -112,15 +122,23 @@ let gameLoop = () => {
             arrows.shift() // // There might be two arrows at the same y value in a combo.
         }
     }
-    for (let j = 0; j < arrows.length; j++) { // TO DO: CHANGE THIS TO ITERATOR INSTEAD OF ARROW IN ARROWS.
-        arrows[j].y -= 5 // Move each arrow up the screen.
-        arrows[j].render() 
-    }
     hitBox.render() // Render the top part of the canvas where the arrows get hit.
+    for (let j = 0; j < arrows.length; j++) { // TO DO: CHANGE THIS TO ITERATOR INSTEAD OF ARROW IN ARROWS.
+        arrows[j].y -= 1 // Move each arrow up the screen.
+        arrows[j].render()
+    }
 }
 
-let arrowInterval = setInterval(createArrow, 1000) // Creating a new arrow every 1 second. 
-let gameInterval = setInterval(gameLoop, 500) // Game refreshes every 500 ms, or half second.
+// Use the below if you want a normal speed game. 
+let gameSpeed = 20 // Affects speed of game.
+let arrowCreationSpeed = 60 * gameSpeed // Calibrated based on arrow height and gameSpeed.
+
+// Use below for if you want a faster game: 
+// let gameSpeed = 1  
+// let arrowCreationSpeed = 250 * gameSpeed */
+
+let arrowInterval = setInterval(createArrow, arrowCreationSpeed) 
+let gameInterval = setInterval(gameLoop, gameSpeed) 
 let stop = () => {
     clearInterval(gameInterval)
     clearInterval(arrowInterval)
