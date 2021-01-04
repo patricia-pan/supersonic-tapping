@@ -45,8 +45,23 @@ let healthScore = 90 // Out of 100.
 let health = document.getElementById('health')
 let isGameOver = false 
 
+let hitBox = {
+    x: 10,
+    y: 10,
+    color: 'orange',
+    width: 680,
+    height: 60, // Need to make this slightly bigger than the size of the arrow svg.
+    render: function() {
+        ctx.fillStyle = this.color
+        ctx.fillRect(this.x, this.y, this.width, this.height)
+        ctx.drawImage(downArrowImg, 285, 10, imgWidth, imgHeight) // Down ghost.
+        ctx.drawImage(leftArrowImg, 215, 10, imgWidth, imgHeight) // Left ghost.
+        ctx.drawImage(upArrowImg, 355, 10, imgWidth, imgHeight) // Up ghost.
+        ctx.drawImage(rightArrowImg, 425, 10, imgWidth, imgHeight) // Right ghost.
+    }
+}
 
-function Arrow(arrowDirection) {
+function Arrow(arrowDirection) { // To create new arrow objects from arrowDirections choreography.
     switch(arrowDirection) {
         case 'left':
             this.x = 215
@@ -78,31 +93,29 @@ function Arrow(arrowDirection) {
     }
 }
 
-function createArrow() { // Creates arrow objects from arrowDirections choreography.
+function createArrow() { // Create arrow object from arrowDirections choreography.
     console.log(i, arrowDirections[i])
     for (let j = 0; j < arrowDirections[i].length; j++) {
-        arrows.push(new Arrow(arrowDirections[i][j])) // Create an arrow object in Arrow constructor function. Add object to arrows array.
+        arrows.push(new Arrow(arrowDirections[i][j]))
     } 
     if (i < arrowDirections.length - 1) {
         i += 1 // Move on to the next choreographed arrowset. 
     }
 }
 
-let hitBox = {
-    x: 10,
-    y: 10,
-    color: 'orange',
-    width: 680,
-    height: 60, // Need to make this slightly bigger than the size of the arrow svg.
-    render: function() {
-        ctx.fillStyle = this.color
-        ctx.fillRect(this.x, this.y, this.width, this.height)
-        ctx.drawImage(downArrowImg, 285, 10, imgWidth, imgHeight) // Down ghost.
-        ctx.drawImage(leftArrowImg, 215, 10, imgWidth, imgHeight) // Left ghost.
-        ctx.drawImage(upArrowImg, 355, 10, imgWidth, imgHeight) // Up ghost.
-        ctx.drawImage(rightArrowImg, 425, 10, imgWidth, imgHeight) // Right ghost.
+let removeOffScreenArrows = () => {
+    if (arrows.length !== 0) {
+        if (arrows[0].y < -imgHeight) {
+           arrows.shift() // Remove oldest arrow when it is entirely off-screen.
+        }
+    }
+    if (arrows.length !== 0) {  // There might be a combo of two arrows with the same y value, so we do this twice.
+        if (arrows[0].y < -imgHeight) {
+            arrows.shift()
+        }
     }
 }
+
 
 
 // BELOW IS FOR CODING PURPOSES ONLY, TO VISUALIZE MIDPOINT OF GAME. DELETE ONCE DONE.
@@ -118,51 +131,33 @@ let hitBox = {
 //     }
 // }
 
-hitBox.render()
-
-function detectHit() {
-    // for (let i = 0; i < arrows.length; i++ ) {
-    }
-    /* if (hero.x + hero.width > ogre.x && 
-        hero.x < ogre.x + ogre.width &&
-        hero.y < ogre.y + ogre.height &&
-        hero.y + hero.height > ogre.y) { 
-            ogre.alive = false */ 
-
 let gameLoop = () => {
     ctx.clearRect(0, 0, game.width, game.height) // Clear the canvas.
-    if (arrows.length !== 0) {
-        if (arrows[0].y < -imgHeight) {
-           arrows.shift() // Remove oldest arrow when it is entirely off-screen.
-        }
-    }
-    if (arrows.length !== 0) {  // There might be a combo of two arrows with the same y value, so we do this twice.
-        if (arrows[0].y < -imgHeight) {
-            arrows.shift()
-        }
-    }
+    detectHit() // detectHit.js
+    removeOffScreenArrows() // detectHit.js
     health.style.width = healthScore + 'px' // Update health bar.
-    hitBox.render() // Render the top part of the canvas where the arrows get hit.
+    hitBox.render()
     // halfHitBox.render() // DELETE THIS ONCE COMPLETE. FOR VISUALIZING HALFWAY POINT ANYWAY.
-    for (let j = 0; j < arrows.length; j++) { // Move up and animate each of the arrows. 
+    for (let j = 0; j < arrows.length; j++) { // Move up and draw each of the on-screen arrows.
         arrows[j].y -= 1
         arrows[j].render()
     }
 }
 
+
 // Use the below if you want a normal speed game. 
 let gameSpeed = 20 // Affects speed of game.
 let arrowCreationSpeed = 60 * gameSpeed // Calibrated based on arrow height and gameSpeed.
 
-// Use below for if you want a faster game: 
+// Use the below if you want a faster game: 
 // let gameSpeed = 1  
 // let arrowCreationSpeed = 250 * gameSpeed */
 
 let arrowInterval = setInterval(createArrow, arrowCreationSpeed) 
 let gameInterval = setInterval(gameLoop, gameSpeed) 
 let stop = () => {
-    clearInterval(gameInterval)
-    clearInterval(arrowInterval)
+    clearInterval(gameInterval) // Stops game from refreshing and animating arrows upward. 
+    clearInterval(arrowInterval) // Stops arrow objects from being cerated from arrowDirections (nested array of strings) and into arrows array (array of objects). 
 } 
 
 //// Watch out for nested for loops when we have setIntervals firing at the same time. 
