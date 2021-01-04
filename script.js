@@ -96,20 +96,26 @@ let hitBox = {
     render: function() {
         ctx.fillStyle = this.color
         ctx.fillRect(this.x, this.y, this.width, this.height)
+        ctx.drawImage(downArrowImg, 285, 10, imgWidth, imgHeight) // Down ghost.
+        ctx.drawImage(leftArrowImg, 215, 10, imgWidth, imgHeight) // Left ghost.
+        ctx.drawImage(upArrowImg, 355, 10, imgWidth, imgHeight) // Up ghost.
+        ctx.drawImage(rightArrowImg, 425, 10, imgWidth, imgHeight) // Right ghost.
     }
 }
 
-let halfHitBox = {
-    x: 10,
-    y: 10,
-    color: 'purple',
-    width: 340,
-    height: 60, // Need to make this slightly bigger than the size of the arrow svg.
-    render: function() {
-        ctx.fillStyle = this.color
-        ctx.fillRect(this.x, this.y, this.width, this.height)
-    }
-}
+
+// BELOW IS FOR CODING PURPOSES ONLY, TO VISUALIZE MIDPOINT OF GAME. DELETE ONCE DONE.
+// let halfHitBox = {
+//     x: 10,
+//     y: 10,
+//     color: 'purple',
+//     width: 340,
+//     height: 60, // Need to make this slightly bigger than the size of the arrow svg.
+//     render: function() {
+//         ctx.fillStyle = this.color
+//         ctx.fillRect(this.x, this.y, this.width, this.height)
+//     }
+// }
 
 hitBox.render()
 
@@ -136,7 +142,7 @@ let gameLoop = () => {
         }
     }
     hitBox.render() // Render the top part of the canvas where the arrows get hit.
-    halfHitBox.render()
+    // halfHitBox.render() // DELETE THIS ONCE COMPLETE. FOR VISUALIZING HALFWAY POINT ANYWAY.
     for (let j = 0; j < arrows.length; j++) { // TO DO: CHANGE THIS TO ITERATOR INSTEAD OF ARROW IN ARROWS.
         arrows[j].y -= 1 // Move each arrow up the screen.
         arrows[j].render()
