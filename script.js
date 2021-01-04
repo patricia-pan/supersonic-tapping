@@ -41,7 +41,8 @@ const imgWidth = imgHeight // Square image.
 let arrows = [] // Array of arrow objects that are presently on screen. 
 let arrowDirections = [['left'], ['up', 'right'], ['down'], []] // Hard-coded arrow choreography that is specific to each song + difficulty.
 let i = 0 // For reading choreography (to iterate through arrowDirections.)
-let health = 50 // Out of 100.
+let healthScore = 90 // Out of 100.
+let health = document.getElementById('health')
 let isGameOver = false 
 
 
@@ -140,10 +141,11 @@ let gameLoop = () => {
             arrows.shift()
         }
     }
+    health.style.width = healthScore + 'px' // Update health bar.
     hitBox.render() // Render the top part of the canvas where the arrows get hit.
     // halfHitBox.render() // DELETE THIS ONCE COMPLETE. FOR VISUALIZING HALFWAY POINT ANYWAY.
-    for (let j = 0; j < arrows.length; j++) { // TO DO: CHANGE THIS TO ITERATOR INSTEAD OF ARROW IN ARROWS.
-        arrows[j].y -= 1 // Move each arrow up the screen.
+    for (let j = 0; j < arrows.length; j++) { // Move up and animate each of the arrows. 
+        arrows[j].y -= 1
         arrows[j].render()
     }
 }
