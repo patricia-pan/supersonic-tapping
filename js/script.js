@@ -47,13 +47,14 @@ const imgWidth = imgHeight // Square image.
 const song = document.createElement('audio')
 song.src = './audio/voxel-revolution-by-kevin-macleod.mp3'
 
-
 let arrows = [] // Array of arrow objects that are presently on screen. 
 let arrowDirections = [['left'], ['up', 'right'], ['down'], []] // Hard-coded arrow choreography for each song + difficulty.
 let i = 0 // For reading choreography (to iterate through arrowDirections.)
 let healthScore = 50 // Out of 100.
 let health = document.getElementById('health')
 let isGameOver = false 
+
+
 
 let hitBox = {
     x: 10,
@@ -167,8 +168,16 @@ let arrowCreationSpeed = 60 * gameSpeed // Calibrated based on arrow height and 
 // let gameSpeed = 1  
 // let arrowCreationSpeed = 250 * gameSpeed */
 
-let arrowInterval = setInterval(createArrow, arrowCreationSpeed) 
-let gameInterval = setInterval(gameLoop, gameSpeed) 
+ // These need to be global variables so that I can 'stop' them from outside my 'start' function.
+let arrowInterval
+let gameInterval
+
+let start = () => { // Type 'start()' into Chrome console to start game.
+    arrowInterval = setInterval(createArrow, arrowCreationSpeed) 
+    gameInterval = setInterval(gameLoop, gameSpeed) 
+    song.play()
+}
+
 let stop = () => {
     clearInterval(gameInterval) // Stops game from refreshing and animating arrows upward. 
     clearInterval(arrowInterval) // Stops arrow objects from being cerated from arrowDirections (nested array of strings) and into arrows array (array of objects). 
