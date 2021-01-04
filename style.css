@@ -29,6 +29,14 @@ body {
 aside#top {
     border: 2px solid black;
     grid-area: top;
+    text-align: center;
+}
+
+div#health {
+    background-color: green;
+    height: 20px;
+    margin: 0 auto; /* Centers everything but has to be used with a width value. */
+    width: 100px;
 }
 canvas#game {
     background-color: #222;

@@ -35,13 +35,13 @@ const leftArrowImg = document.getElementById('left-arrow')
 const downArrowImg = document.getElementById('down-arrow')
 const upArrowImg = document.getElementById('up-arrow')
 const rightArrowImg = document.getElementById('right-arrow')
-const imgHeight = 60 // Width of each arrow image. hitBox's height is 60px.
-const imgWidth = imgHeight
+const imgHeight = 60 // img of DDR arrow. For reference, hitBox's height is 60px.
+const imgWidth = imgHeight // Square image. 
 
-let arrows = [] // Array of arrow objects that are on screen. 
-let arrowDirections = [['left'], ['up', 'right'], ['down'], []] // Hard-coded arrow choreography that is specific to each song + difficulty. One interval for looping through indices every 1000ms in arrowChoreography to push an object into arrows array. 
-let i = 0 // For reading choreography and to iterate through arrowDirections.
-let health = 50
+let arrows = [] // Array of arrow objects that are presently on screen. 
+let arrowDirections = [['left'], ['up', 'right'], ['down'], []] // Hard-coded arrow choreography that is specific to each song + difficulty.
+let i = 0 // For reading choreography (to iterate through arrowDirections.)
+let health = 50 // Out of 100.
 let isGameOver = false 
 
 
@@ -130,15 +130,14 @@ function detectHit() {
 
 let gameLoop = () => {
     ctx.clearRect(0, 0, game.width, game.height) // Clear the canvas.
-    // ctx.rotate(20 * Math.PI / 180); to rotate something 20 degrees clockwise. https://www.w3schools.com/tags/canvas_rotate.asp
     if (arrows.length !== 0) {
         if (arrows[0].y < -imgHeight) {
            arrows.shift() // Remove oldest arrow when it is entirely off-screen.
         }
     }
-    if (arrows.length !== 0) {
+    if (arrows.length !== 0) {  // There might be a combo of two arrows with the same y value, so we do this twice.
         if (arrows[0].y < -imgHeight) {
-            arrows.shift() // // There might be two arrows at the same y value in a combo.
+            arrows.shift()
         }
     }
     hitBox.render() // Render the top part of the canvas where the arrows get hit.
