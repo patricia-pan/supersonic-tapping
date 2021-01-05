@@ -27,5 +27,10 @@ https://www.deviantart.com/inkjuse/art/DDR-Arrow-111309080
 ### Credit for background music.
 https://incompetech.filmmusic.io/song/7017-voxel-revolution
 
+
+Aerosol Of My Love by Kevin MacLeod
+Link: https://incompetech.filmmusic.io/song/7013-aerosol-of-my-love
+License: https://filmmusic.io/standard-license
+
 ### Credit for font:
 https://fonts.google.com/specimen/Bungee+Shade?query=morn&sidebar.open=true&selection.family=Bungee+Shade

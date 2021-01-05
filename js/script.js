@@ -44,7 +44,7 @@ const imgHeight = 60 // img of DDR arrow. For reference, hitBox's height is 60px
 const imgWidth = imgHeight // Square image. 
 
 const song = document.createElement('audio')
-song.src = './audio/voxel-revolution-by-kevin-macleod.mp3'
+song.src = './audio/aerosol-of-my-love-by-kevin-macleod.mp3'
 song.volume = 0.1
 
 let arrows = [] // Array of arrow objects that are presently on screen. 
@@ -151,7 +151,6 @@ let removeOffScreenArrows = () => {
 let gameLoop = () => {
     ctx.clearRect(0, 0, game.width, game.height) // Clear the canvas.
     removeOffScreenArrows() 
-    // detectArrowHit()
     if (healthScore > 98) {
         health.style.borderRadius = '3px'
     }

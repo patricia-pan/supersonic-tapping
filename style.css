@@ -4,7 +4,7 @@ html, body {
 }
 
 body {
-    background-color: lightblue;
+    background-color: rgb(171, 147, 151);
     background-repeat: space;
     background-size: cover;
     border-radius: 4px;
@@ -14,6 +14,7 @@ body {
 h1 {
     font-family: 'Bungee Shade', cursive;
     color: #4e1c4e;
+    background-color: rgb(254, 222, 227);
 }
 #container {
     background-color: pink;
@@ -91,7 +92,7 @@ div#splash {
 
 div.result {
     background-color: grey;
-    display: none;
+    display: none; /* Change to 'visible' to show. */
     left: 33%; /* We use left because of our absolute position. */
     position: absolute;
     top: 45%; 
