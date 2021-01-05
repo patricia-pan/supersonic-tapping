@@ -8,33 +8,31 @@
     <!-- <script src="./splash.js" defer></script> -->
     <script src="./js/detectHit.js" defer></script>
     <script src="./js/script.js" defer></script>
+    <script src="./js/start.js" defer></script>
+
 </head>
 <body>
-    <h1> Welcome to Super Ultra Mega Sonic Evolution Tapping of Keyboard</h1>
+    <h1> Welcome... to <em>Super Ultra Mega Sonic Evolution Tapping of Keyboard™</em></h1>
     <div id="container">
-        <aside id="top">Top Aside (For displaying health bar).
+        <aside id="top">
             <div id="health-box">
                 <div id="health"></div>
             </div>
         </aside>
         <main>
             <canvas id="game">
-                <!-- How to draw an image on canvas: https://developer.mozilla.org/en-US/docs/Web/API/CanvasRenderingContext2D/drawImage -->
-                <div style="display:none;">
-                    <img id="left-arrow" src="./img/leftArrow.png" width="40" height="40">
-                    <img id="down-arrow" src="./img/downArrow.png" width="40" height="40">
-                    <img id="up-arrow" src="./img/upArrow.png" width="40" height="40">
-                    <img id="right-arrow" src="./img/rightArrow.png" width="40" height="40">\
-
-                    <img id="left-arrow-ghost" src="./img/leftArrowGhost.png" width="40" height="40">
-                    <img id="down-arrow-ghost" src="./img/downArrowGhost.png" width="40" height="40">
-                    <img id="up-arrow-ghost" src="./img/upArrowGhost.png" width="40" height="40">
-                    <img id="right-arrow-ghost" src="./img/rightArrowGhost.png" width="40" height="40">
-                </div>
                 Game Canvas
             </canvas>
         </main>
-        <aside id="bottom">Bottom Aside (For displaying song name, difficulty, combo count.)</aside>
+        <aside id="bottom">
+            <!-- Start button. -->
+            <label for="start-button"></label> <!-- 'for' attribute is for accessibility. Have the value match the 'id' value. -->
+            <button id="start-button">Start Game</button> 
+            
+            <!-- Pause button. -->
+            <label for="pause-button"></label> <!-- 'for' attribute is for accessibility. Have the value match the 'id' value. -->
+            <button id="pause-button">Pause Game</button>     
+        </aside>
     </div>
 </body>
 </html>

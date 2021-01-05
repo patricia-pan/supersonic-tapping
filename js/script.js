@@ -24,7 +24,6 @@
 
 // SVG = scalable vector graphics for arrow image. 
 
-
 // Assign dimensional attributes for canvas#game.
 game.setAttribute('width', getComputedStyle(game)['width'])
 game.setAttribute('height', getComputedStyle(game)['height'])
@@ -48,12 +47,11 @@ const song = document.createElement('audio')
 song.src = './audio/voxel-revolution-by-kevin-macleod.mp3'
 
 let arrows = [] // Array of arrow objects that are presently on screen. 
-let arrowDirections = [['left'], ['up', 'right'], ['down'], []] // Hard-coded arrow choreography for each song + difficulty.
+let arrowDirections = [['left'], ['up', 'right'], ['down'], [], ['left']] // Hard-coded arrow choreography for each song + difficulty.
 let i = 0 // For reading choreography (to iterate through arrowDirections.)
 let healthScore = 50 // Out of 100.
 let health = document.getElementById('health')
 let isGameOver = false 
-
 
 
 let hitBox = {
@@ -64,40 +62,57 @@ let hitBox = {
     margin: 10, 
     width: 680,
     render: function() {
+        let leftArrow = document.createElement('img')
+        let downArrow = document.createElement('img')
+        let upArrow = document.createElement('img')
+        let rightArrow = document.createElement('img')
+
+        leftArrow.src = './img/leftArrow.png'
+        downArrow.src = './img/downArrow.png'
+        upArrow.src = './img/upArrow.png'
+        rightArrow.src = './img/rightArrow.png'
+
         ctx.fillStyle = this.color
         ctx.fillRect(this.x, this.y, this.width, this.height)
-        ctx.drawImage(downArrowImg, 285, 10, imgWidth, imgHeight) 
-        ctx.drawImage(leftArrowImg, 215, 10, imgWidth, imgHeight) 
-        ctx.drawImage(upArrowImg, 355, 10, imgWidth, imgHeight) 
-        ctx.drawImage(rightArrowImg, 425, 10, imgWidth, imgHeight) 
+        ctx.drawImage(downArrow, 285, 10, imgWidth, imgHeight) 
+        ctx.drawImage(leftArrow, 215, 10, imgWidth, imgHeight) 
+        ctx.drawImage(upArrow, 355, 10, imgWidth, imgHeight) 
+        ctx.drawImage(rightArrow, 425, 10, imgWidth, imgHeight) 
     }
 }
+hitBox.render()
+
 
 function Arrow(arrowDirection) { // To create new arrow objects from arrowDirections choreography.
+    this.img = document.createElement('img')
     switch(arrowDirection) {
         case 'left':
         this.direction = 'left'    
         this.x = 215
             this.y = 500
-            this.img = leftArrowImg
+            this.img.src = './img/leftArrow.png'
+            // leftArrowImg
             break
         case 'down':
             this.direction = 'down'
             this.x = 215 + imgWidth + 10 // 285. For a margin of 5 px between each arrow. 
             this.y = 500
-            this.img = downArrowImg
+            this.img.src = './img/downArrow.png'
+            // this.img = downArrowImg
             break
         case 'up':
             this.direction = 'up'
             this.x = 355
             this.y = 500
-            this.img = upArrowImg
+            this.img.src = './img/upArrow.png'
+            // this.img = upArrowImg
             break
         case 'right':
             this.direction = 'right'
             this.x = 425
             this.y = 500
-            this.img = rightArrowImg
+            this.img.src = './img/rightArrow.png'
+            // this.img = rightArrowImg
             break
         default: 
             console.log('Nothing happens.')
@@ -106,8 +121,8 @@ function Arrow(arrowDirection) { // To create new arrow objects from arrowDirect
         this.width = imgWidth 
         this.height = imgHeight
         this.render = function() {
-        ctx.drawImage(this.img, this.x, this.y, this.width, this.height)
-    }
+            ctx.drawImage(this.img, this.x, this.y, this.width, this.height)
+        }
 }
 
 function createArrow() { // Create arrow object from arrowDirections choreography.
@@ -122,7 +137,7 @@ function createArrow() { // Create arrow object from arrowDirections choreograph
 let removeOffScreenArrows = () => {
     if (arrows.length !== 0) {
         if (arrows[0].y < -imgHeight) {
-           arrows.shift() // Remove oldest arrow when it is entirely off-screen.
+        arrows.shift() // Remove oldest arrow when it is entirely off-screen.
         }
     }
     if (arrows.length !== 0) {  // There might be a combo of two arrows with the same y value.
@@ -132,43 +147,27 @@ let removeOffScreenArrows = () => {
     }
 }
 
-
-// BELOW IS FOR CODING PURPOSES ONLY, TO VISUALIZE MIDPOINT OF GAME. DELETE ONCE DONE.
-// let halfHitBox = {
-//     x: 10,
-//     y: 10,
-//     color: 'purple',
-//     width: 340,
-//     height: 60, // Need to make this slightly bigger than the size of the arrow svg.
-//     render: function() {
-//         ctx.fillStyle = this.color
-//         ctx.fillRect(this.x, this.y, this.width, this.height)
-//     }
-// }
-
 let gameLoop = () => {
     ctx.clearRect(0, 0, game.width, game.height) // Clear the canvas.
     removeOffScreenArrows() 
-    detectArrowHit()
+    // detectArrowHit()
     health.style.width = healthScore + 'px' // Update health bar.
     hitBox.render()
-    // halfHitBox.render() // DELETE THIS ONCE COMPLETE. FOR VISUALIZING HALFWAY POINT ANYWAY.
     for (let j = 0; j < arrows.length; j++) { // Move up and draw each of the on-screen arrows.
         arrows[j].y -= 1
         arrows[j].render()
     }
 }
 
-
-// Use the below if you want a normal speed game. 
-let gameSpeed = 20 // Affects speed of game.
-let arrowCreationSpeed = 60 * gameSpeed // Calibrated based on arrow height and gameSpeed.
+// Use the below if you want a normal speed game: 
+let gameSpeed = 20 
+let arrowCreationSpeed = 60 * gameSpeed // Manually calibrated.
 
 // Use the below if you want a faster game: 
 // let gameSpeed = 1  
 // let arrowCreationSpeed = 250 * gameSpeed */
 
- // These need to be global variables so that I can 'stop' them from outside my 'start' function.
+// These need to be global variables so that I can 'pause' them from outside my 'start' function.
 let arrowInterval
 let gameInterval
 
@@ -178,23 +177,11 @@ let start = () => { // Type 'start()' into Chrome console to start game.
     song.play()
 }
 
-let stop = () => {
+let pause = () => {
     clearInterval(gameInterval) // Stops game from refreshing and animating arrows upward. 
     clearInterval(arrowInterval) // Stops arrow objects from being cerated from arrowDirections (nested array of strings) and into arrows array (array of objects). 
     song.pause()
 } 
-
-//// Watch out for nested for loops when we have setIntervals firing at the same time. 
-
-function destroyArrows(arrows) {
-    // Destroy arrows if missed arrows go off-screen.
-
-    // Destroy arrows if they are 'hit' within their collision boxes. 
-
-}
-
-
-
 
 /* MVP:
 
