@@ -23,10 +23,11 @@ Use the a, s, w, d keys to press the arrows when they reach their placeholders a
 * CSS
 * JavaScript
 
-## Approach Taken
-* Stub out what needed to be done in psuedocode
+## Steps Taken
+* Stub out what needs to be done in psuedocode
 * Render hit bar on canvas
 * Create constructor function for creating arrow objects
+* Edit image of arrow to have transparent background
 * Read arrow choreography to create new arrow objects
 * Render arrow images on screen and have them automatically scroll up
 * Calibrate arrow creation speed relative to animate (game loop) speed
@@ -37,9 +38,15 @@ Use the a, s, w, d keys to press the arrows when they reach their placeholders a
 * Add 'start' and 'pause' button
 * Update game background, fonts, border radius
 * Added different colors and graphics for health bar
+* Edit color of arrow image 
 * Add 'win' and 'lose' logic and pop-up results
+* Arrow presses visually represented on screen 
 
 ## Future Updates
+* Add splash screen before game starts
+* Add 'Restart' button to lose pop-up
+* Refactor game to be responsive using grid and have a minimum width
+* Refactor buttons to be square divs that animate (for example, change color, expand, or outline) when you hover over them
 * Be able to select song and difficulty
 * Have the option to use the arrow keys instead of aswd
 * Add two player mode 
