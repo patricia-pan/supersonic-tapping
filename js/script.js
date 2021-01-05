@@ -69,10 +69,10 @@ let hitBox = {
         let upArrow = document.createElement('img')
         let rightArrow = document.createElement('img')
 
-        leftArrow.src = './img/leftArrow.png'
-        downArrow.src = './img/downArrow.png'
-        upArrow.src = './img/upArrow.png'
-        rightArrow.src = './img/rightArrow.png'
+        leftArrow.src = './img/leftArrowGhost.png'
+        downArrow.src = './img/downArrowGhost.png'
+        upArrow.src = './img/upArrowGhost.png'
+        rightArrow.src = './img/rightArrowGhost.png'
 
         ctx.fillStyle = this.color
         ctx.fillRect(this.x, this.y, this.width, this.height)
@@ -99,21 +99,18 @@ function Arrow(arrowDirection) { // To create new arrow objects from arrowDirect
             this.x = 215 + imgWidth + 10 // 285. For a margin of 5 px between each arrow. 
             this.y = 500
             this.img.src = './img/downArrow.png'
-            // this.img = downArrowImg
             break
         case 'up':
             this.direction = 'up'
             this.x = 355
             this.y = 500
             this.img.src = './img/upArrow.png'
-            // this.img = upArrowImg
             break
         case 'right':
             this.direction = 'right'
             this.x = 425
             this.y = 500
             this.img.src = './img/rightArrow.png'
-            // this.img = rightArrowImg
             break
         default: 
             console.log('Nothing happens.')
