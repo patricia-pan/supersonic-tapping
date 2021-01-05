@@ -1,52 +1,66 @@
 # supersonic-tapping
-Have you heard of Dance Dance Revolution (DDR), Tap Tap Revenge, or Beat Saber? If you have, then you would know that's what missing from that list is the next hit browser-based rhythm game. 
+Have you ever heard of Dance Dance Revolution (DDR), Tap Tap Revenge, or Beat Saber? If you have, then you would know that's what missing from that list is the next hit browser-based rhythm game! 
 
-Fortunately for you, you've stumbled across Super Ultra Mega Sonic Tapping of Keyboard Evolution™
+Fortunately for you, you've stumbled across Super Ultra Mega Sonic Tapping of Keyboard Evolution™, this generation's next big hit game amongst savvy Github gamers. 
 
-Super Ultra Mega Sonic Tapping of Keyboard Evolution. Unit 1 project for General Assembly's Software Engineering Immersive (GA SEI), as a part of the 12/14/20 Supersonics cohort.
+Be prepared to be blown away by:
+- How this game has a selective audience of those familiar with making pull requests from Github and opening files in their local server. 
+- The lightweight design of the application due to how everything was engineered in one page. 
+- The game's AI and quick ability to predict that you only want to play one song at one difficulty as soon as you click on the 'Start' button.
 
-## Context
+## Where to Play
+Click [me](https://patricia-pan.github.io/supersonic-tapping/)!
 
+## How to Play 
+Use the a, s, w, d keys to press the arrows when they reach their placeholders at the top of the screen. Hint: The timing is to the beat of the selected song!
 
-## Project Requirements
-https://gawdiseattle.gitbook.io/wdi/11-projects/project-1
+ Hitting each arrow at the right time will give you 1 point, and missing an arrow will cost you one point. 
 
-## Pitch Guidelines:
-https://www.notion.so/patriciapan/Supersonics-P1-Pitch-Guidelines-5f6c39c888a749be8daaafae83872cae
+ You lose the game if your health goes to 0, and you win the game if you're still alive when the song is over!
 
-## Example of solid README.md
-https://github.com/melissay94/gradies-grueling-grind/blob/master/README.md
+## Tech Stack
+* HTML
+* CSS
+* JavaScript
 
-## Mastering Markdowns
-https://guides.github.com/features/mastering-markdown/
+## Approach Taken
+* Stub out what needed to be done in psuedocode
+* Render hit bar on canvas
+* Create constructor function for creating arrow objects
+* Read arrow choreography to create new arrow objects
+* Render arrow images on screen and have them automatically scroll up
+* Calibrate arrow creation speed relative to animate (game loop) speed
+* Have arrows fade out upon collision with hit bar
+* Have arrows fade out upon collision with hit bar AND correct key press
+* Make health bar graphic dynamic 
+* Select a song and add as audio
+* Add 'start' and 'pause' button
+* Update game background, fonts, border radius
+* Added different colors and graphics for health bar
+* Add 'win' and 'lose' logic and pop-up results
 
-### Websites for designing wireframes
-https://app.diagrams.net/
-figma.com
+## Future Updates
+* Be able to select song and difficulty
+* Have the option to use the arrow keys instead of aswd
+* Add two player mode 
+* Understand why placeholder arrows at top of screen aren't rendering on top of hit bar before start of game. When refreshing the page, sometimes they show up, most often they don't.
 
-### Credit for DDR arrow image:
-https://www.deviantart.com/inkjuse/art/DDR-Arrow-111309080
+## Credits
+>Mastering markdown: https://guides.github.com/features/mastering-markdown/
 
-### Credit for editing DDR arrow images:
-https://github.com/ngoldstein51
+>DDR arrow sprite: https://www.deviantart.com/inkjuse/art/DDR-Arrow-111309080
 
-### Credit for canvas background:
-https://ansimuz.itch.io/cyberpunk-street-environment
+>Image editing of DDR arrow: https://github.com/ngoldstein51
 
-### Credit for water gif: 
-https://iblog.dearbornschools.org/vietinghoffpe/2017/05/22/last-week-to-swim-2/
+>Game Background: https://ansimuz.itch.io/cyberpunk-street-environment
 
-### Credit for pink sparkle gif: 
-https://giphy.com/gifs/reaction-mood-3d63YDxRJRtkZepvGm
+>Audio: Aerosol Of My Love by Kevin MacLeod
+>Link: https://incompetech.filmmusic.io/song/7013-aerosol-of-my-love
+>License: https://filmmusic.io/standard-license
 
-### Credit for background music.
-Aerosol Of My Love by Kevin MacLeod
-Link: https://incompetech.filmmusic.io/song/7013-aerosol-of-my-love
-License: https://filmmusic.io/standard-license
+>Gif for >98% health: https://iblog.dearbornschools.org/vietinghoffpe/2017/05/22/last-week-to-swim-2/
 
-Maple Leaf Rag by Kevin MacLeod
-Link: https://incompetech.filmmusic.io/song/5762-maple-leaf-rag
-License: https://filmmusic.io/standard-license
+>Fonts: https://fonts.google.com/specimen/Bungee+Shade?query=morn&sidebar.open=true&selection.family=Bungee+Shade
 
-### Credit for fonts:
-https://fonts.google.com/specimen/Bungee+Shade?query=morn&sidebar.open=true&selection.family=Bungee+Shade
+### Disclaimers
+###### Super Ultra Mega Sonic Tapping of Keyboard Evolution™ is not a registered trademark. Mileage may vary. Please consult a doctor to see if Super Ultra Mega Sonic Tapping of Keyboard Evolution™ is the best game, like, ever for you. This was Trisha's unit 1 project after 3 weeks into General Assembly's Software Engineering Immersive (GA SEI), as a part of the 12/14/20 'Supersonics' cohort.

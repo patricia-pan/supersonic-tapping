@@ -61,19 +61,23 @@ div#health {
     width: 50px; /* Health starts off at 50%. */
 }
 
-main {
-    font-family: 'Handlee', cursive;
-}
-
 canvas#game {
     background-color: #222;
     background-image: url('./img/cyberpunk-street.png');
     background-position: left;
     background-size: cover;
     height: 500px;
-    border: 2px dashed black;
+    border: 2px solid black;
     width: 700px; /* Having trouble having it fit inside of my container. How do I have everything line up and what does each line of CSS due to each item? */
     grid-area: game;
+}
+
+div#splash {
+    font-family: 'Handlee', cursive;
+}
+
+div.result { 
+    font-family: 'Handlee', cursive;
 }
 
 aside#bottom {
