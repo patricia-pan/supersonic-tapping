@@ -48,7 +48,8 @@ song.src = './audio/aerosol-of-my-love-by-kevin-macleod.mp3'
 song.volume = 0.1
 
 let arrows = [] // Array of arrow objects that are presently on screen. 
-let arrowDirections = [['left'], ['up', 'right'], ['down'], [], ['left'], ['left'], ['up', 'down']] // Hard-coded arrow choreography for each song + difficulty.
+let arrowDirections = [['left'], ['up', 'right']] // Hard-coded arrow choreography for each song + difficulty.
+// , ['down'], [], ['left'], ['left'], ['up', 'down']
 let i = 0 // For reading choreography (to iterate through arrowDirections.)
 let healthScore = 50 // Out of 100.
 let health = document.getElementById('health')
@@ -159,7 +160,7 @@ let updateHealthBar = () => {
         health.style.backgroundColor = '#f5e342'
         health.style.backgroundImage = 'none'
     } 
-    else if (healthScore < 50) {
+    else if (healthScore < 35) {
         health.style.backgroundColor = '#e0f542'
         health.style.backgroundImage = 'none'
     }
@@ -183,6 +184,7 @@ let gameOver = (result) => {
     switch(result) {
         case 'win': 
             document.getElementById('win').style.display = 'block'
+            document.getElementById('win').innerText = `Congratulations, you've made it!! 🥳\nYour final score is ${healthScore} out of 100.`
             break
         case 'lose':
             document.getElementById('lose').style.display = 'block' 
@@ -206,8 +208,9 @@ let gameLoop = () => {
             arrows[j].live = false
         }
     }
-    if (i == arrowDirections - 1 && arrows.length == 0) {
-        setInterval(gameOver(win), 1000) // End the game 1 seconds after the last arrow has left the screen.
+    if (i >= arrowDirections.length && arrows.length == 0) {
+        setTimeout(gameOver('win'), 5000) // End the game 5 seconds after the last arrow has left the screen.
+        // HAVING TROUBLE WITH THE ABOVE. CHANGING THE 5000 to 10000 DOESN'T AFFECT THE TIME.
     }
 }
 
