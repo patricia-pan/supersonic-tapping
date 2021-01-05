@@ -47,7 +47,7 @@ const song = document.createElement('audio')
 song.src = './audio/voxel-revolution-by-kevin-macleod.mp3'
 
 let arrows = [] // Array of arrow objects that are presently on screen. 
-let arrowDirections = [['left'], ['up', 'right'], ['down'], [], ['left']] // Hard-coded arrow choreography for each song + difficulty.
+let arrowDirections = [['left'], ['up', 'right'], ['down'], [], ['left'], ['left'], ['up', 'down']] // Hard-coded arrow choreography for each song + difficulty.
 let i = 0 // For reading choreography (to iterate through arrowDirections.)
 let healthScore = 50 // Out of 100.
 let health = document.getElementById('health')

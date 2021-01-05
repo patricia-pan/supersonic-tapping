@@ -32,6 +32,11 @@ aside#top {
     grid-area: top;
     position: relative;
     text-align: center;
+
+    /* Vertically center children. */
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
 }
 
 div#health-box {
@@ -51,7 +56,9 @@ div#health {
 }
 canvas#game {
     background-color: #222;
-    /* background-image: './img/cyberpunk-street.png' */
+    background-image: url('./img/cyberpunk-street.png');
+    background-position: center;
+    background-size: cover;
     height: 500px;
     border: 2px dashed black;
     width: 700px; /* Having trouble having it fit inside of my container. How do I have everything line up and what does each line of CSS due to each item? */
@@ -60,12 +67,13 @@ canvas#game {
 
 aside#bottom {
     border: 2px solid black;
+    display: flex;
+    flex-direction: row;
+    justify-content: center;
     grid-area: bottom;
-    position: relative;
+    align-items: center;
 }
 
 button {
-    /* position: absolute;
-    top: 50%;
-    transform: translateY(-50%); */
+    margin: 10px;
 }
