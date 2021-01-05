@@ -17,9 +17,6 @@ https://github.com/melissay94/gradies-grueling-grind/blob/master/README.md
 ## Mastering Markdowns
 https://guides.github.com/features/mastering-markdown/
 
-## Royalty-free music
- https://incompetech.com/music/royalty-free/music.html
-
 ### Websites for designing wireframes
 https://app.diagrams.net/
 figma.com
@@ -31,4 +28,4 @@ https://www.deviantart.com/inkjuse/art/DDR-Arrow-111309080
 https://incompetech.filmmusic.io/song/7017-voxel-revolution
 
 ### Credit for font:
-https://devilsworkshop.itch.io/pixel-font
+https://fonts.google.com/specimen/Bungee+Shade?query=morn&sidebar.open=true&selection.family=Bungee+Shade

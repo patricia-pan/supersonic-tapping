@@ -13,10 +13,12 @@ body {
 
 h1 {
     font-family: 'Bungee Shade', cursive;
+    color: #4e1c4e;
 }
 #container {
     background-color: pink;
     border: 1px dashed magenta;
+    border-radius: 10px;
     margin: 0 auto; /* Centers everything inside the container, needs to be used with a width value. */
     max-width: 60em; /* So that gameplay screen doesn't take up entire width. */
     text-align: center;
@@ -31,7 +33,6 @@ h1 {
 }
 
 aside#top {
-    border: 2px solid black;
     grid-area: top;
     position: relative;
     text-align: center;
@@ -44,7 +45,8 @@ aside#top {
 
 div#health-box {
     background-color: white;
-    border-radius: 5px;
+    border: 1px solid #265B5F;
+    border-radius: 3px;
     height: 20px;
     margin: 0 auto; /* Centers everything but has to be used with a width value. */
     width: 100px;
@@ -69,7 +71,6 @@ canvas#game {
 }
 
 aside#bottom {
-    border: 2px solid black;
     display: flex;
     flex-direction: row;
     justify-content: center;
@@ -78,6 +79,9 @@ aside#bottom {
 }
 
 button {
+    color: #4e1c4e;
+    border-radius: 5px;
+    font-family: 'Bungee Shade', cursive;
     margin: 10px;
 }
 
