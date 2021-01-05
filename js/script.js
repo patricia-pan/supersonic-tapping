@@ -22,8 +22,7 @@ song.src = './audio/aerosol-of-my-love-by-kevin-macleod.mp3'
 song.volume = 0.1
 
 let arrows = [] // Array of arrow objects that are presently on screen. 
-let arrowDirections = [['left'], ['up', 'right']] // Hard-coded arrow choreography for each song + difficulty.
-// , ['down'], [], ['left'], ['left'], ['up', 'down']
+let arrowDirections = [['up'], [], ['left'], ['up', 'right'], ['down'], ['up'], [], [], ['left'], ['left'], ['up', 'down'], [], ['right'], ['down'], [], ['up'], ['up','left'], ['up', 'right'], ['left'], ['left', 'right'], [],[], ['up'], ['left'], ['up', 'right'], ['down'], ['up', 'down'], ['left', 'right'], ['down'], ['down', 'right'], [], ['up'], ['left'], ['up', 'down']] //Hard-coded arrow choreography for each song + difficulty.
 let i = 0 // For reading choreography (to iterate through arrowDirections.)
 let healthScore = 50 // Out of 100.
 let health = document.getElementById('health')
@@ -124,24 +123,24 @@ let updateHealthBar = () => {
         gameOver('lose')
     }
     else if (healthScore < 10) {
+        health.style.backgroundImage = 'none'
         health.style.backgroundColor = '#f55142'
-        health.style.backgroundImage = 'none'
     }
-    else if (healthScore < 25) {
-        health.style.backgroundColor = '#f5e342'
-        health.style.backgroundImage = 'none'
-    } 
     else if (healthScore < 35) {
-        health.style.backgroundColor = '#e0f542'
         health.style.backgroundImage = 'none'
+        health.style.backgroundColor = '#f5e342'
+    } 
+    else if (healthScore < 45) {
+        health.style.backgroundImage = 'none'
+        health.style.backgroundColor = '#e0f542'
     }
     else if (healthScore < 75) {
-        health.style.backgroundColor = '42f59e'
         health.style.backgroundImage = 'none'
+        health.style.backgroundColor = '42f59e'
     }
     else if (healthScore >= 75) {
-        health.style.backgroundColor = '#42f5e6'
         health.style.backgroundImage = 'none'
+        health.style.backgroundColor = '#42f5e6'
     }
     if (healthScore > 98) {
         health.style.borderRadius = '3px'
@@ -205,6 +204,7 @@ let start = () => { // Type 'start()' into Chrome console to start game.
     arrowInterval = setInterval(createArrow, arrowCreationSpeed) 
     gameInterval = setInterval(gameLoop, gameSpeed) 
     setTimeout(playSong, 1200) // Offset the song start so that the choreography starts at a good spot.
+}
 
 let pause = () => {
     clearInterval(gameInterval) // Stops game from refreshing and animating arrows upward. 
