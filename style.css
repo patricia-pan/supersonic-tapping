@@ -68,7 +68,7 @@ main {
 canvas#game {
     background-color: #222;
     background-image: url('./img/cyberpunk-street.png');
-    background-position: center;
+    background-position: left;
     background-size: cover;
     height: 500px;
     border: 2px dashed black;
