@@ -159,6 +159,12 @@ let gameLoop = () => {
     for (let j = 0; j < arrows.length; j++) { // Move up and draw each of the on-screen arrows.
         arrows[j].y -= 1
         arrows[j].render()
+        if (arrows[j].y <= 0 && arrows[j].live) { // If the arrow has passed the hitBox + tolerance, lose a point. But only lose a point once for each arrow we miss.
+            if (healthScore > 0) {
+                healthScore -= 1
+            }
+            arrows[j].live = false
+        }
     }
 }
 

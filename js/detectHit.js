@@ -12,11 +12,6 @@ let detectArrowHit = () => {
                     healthScore += 1
                 }
             }
-        else if (arrows[j].y <= 0) { // If the arrow has passed the hitBox + tolerance.
-            if (healthScore > 0) {
-                healthScore -= 1
-            }
-        }
     }
 }
 
