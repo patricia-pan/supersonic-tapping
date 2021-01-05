@@ -1,8 +1,11 @@
 # supersonic-tapping
+Have you heard of Dance Dance Revolution (DDR), Tap Tap Revenge, or Beat Saber? If you have, then you would know that's what missing from that list is the next hit browser-based rhythm game. 
+
+Fortunately for you, you've stumbled across Super Ultra Mega Sonic Tapping of Keyboard Evolution™
+
 Super Ultra Mega Sonic Tapping of Keyboard Evolution. Unit 1 project for General Assembly's Software Engineering Immersive (GA SEI), as a part of the 12/14/20 Supersonics cohort.
 
 ## Context
-Have you heard of Dance Dance Revolution (DDR), Tap Tap Revenge, or 
 
 
 ## Project Requirements
@@ -45,5 +48,5 @@ Maple Leaf Rag by Kevin MacLeod
 Link: https://incompetech.filmmusic.io/song/5762-maple-leaf-rag
 License: https://filmmusic.io/standard-license
 
-### Credit for font:
+### Credit for fonts:
 https://fonts.google.com/specimen/Bungee+Shade?query=morn&sidebar.open=true&selection.family=Bungee+Shade
