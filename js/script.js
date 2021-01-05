@@ -45,7 +45,7 @@ const imgWidth = imgHeight // Square image.
 
 const song = document.createElement('audio')
 song.src = './audio/voxel-revolution-by-kevin-macleod.mp3'
-song.volume = 0.5
+song.volume = 0.1
 
 let arrows = [] // Array of arrow objects that are presently on screen. 
 let arrowDirections = [['left'], ['up', 'right'], ['down'], [], ['left'], ['left'], ['up', 'down']] // Hard-coded arrow choreography for each song + difficulty.
