@@ -83,7 +83,6 @@ let hitBox = {
 }
 hitBox.render()
 
-
 function Arrow(arrowDirection) { // To create new arrow objects from arrowDirections choreography.
     this.img = document.createElement('img')
     switch(arrowDirection) {
@@ -148,13 +147,39 @@ let removeOffScreenArrows = () => {
     }
 }
 
+let updateHealthBar = () => {
+    if (healthScore < 10) {
+        health.style.backgroundColor = '#f55142'
+        health.style.backgroundImage = 'none'
+    }
+    else if (healthScore < 25) {
+        health.style.backgroundColor = '#f5e342'
+        health.style.backgroundImage = 'none'
+    } 
+    else if (healthScore < 50) {
+        health.style.backgroundColor = '#e0f542'
+        health.style.backgroundImage = 'none'
+    }
+    else if (healthScore < 75) {
+        health.style.backgroundColor = '42f59e'
+        health.style.backgroundImage = 'none'
+    }
+    else if (healthScore >= 75) {
+        health.style.backgroundColor = '#42f5e6'
+        health.style.backgroundImage = 'none'
+
+    }
+    if (healthScore > 98) {
+        health.style.borderRadius = '3px'
+        health.style.backgroundImage = "url('./img/rainbow.gif')" // You get an animated rainbow at 100 health.
+    }
+    health.style.width = healthScore + 'px' // Update health bar.
+}
+
 let gameLoop = () => {
     ctx.clearRect(0, 0, game.width, game.height) // Clear the canvas.
     removeOffScreenArrows() 
-    if (healthScore > 98) {
-        health.style.borderRadius = '3px'
-    }
-    health.style.width = healthScore + 'px' // Update health bar.
+    updateHealthBar()
     hitBox.render()
     for (let j = 0; j < arrows.length; j++) { // Move up and draw each of the on-screen arrows.
         arrows[j].y -= 1

@@ -32,5 +32,9 @@ Aerosol Of My Love by Kevin MacLeod
 Link: https://incompetech.filmmusic.io/song/7013-aerosol-of-my-love
 License: https://filmmusic.io/standard-license
 
+Maple Leaf Rag by Kevin MacLeod
+Link: https://incompetech.filmmusic.io/song/5762-maple-leaf-rag
+License: https://filmmusic.io/standard-license
+
 ### Credit for font:
 https://fonts.google.com/specimen/Bungee+Shade?query=morn&sidebar.open=true&selection.family=Bungee+Shade
