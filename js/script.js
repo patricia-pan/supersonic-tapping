@@ -136,7 +136,7 @@ let updateHealthBar = () => {
     }
     else if (healthScore < 75) {
         health.style.backgroundImage = 'none'
-        health.style.backgroundColor = '42f59e'
+        health.style.backgroundColor = '#42f59e'
     }
     else if (healthScore >= 75) {
         health.style.backgroundImage = 'none'

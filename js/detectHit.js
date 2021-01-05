@@ -26,6 +26,7 @@ let hitHandler = e => {
     downArrow.src = './img/downArrowActive.png'
     upArrow.src = './img/upArrowActive.png'
     rightArrow.src = './img/rightArrowActive.png'
+    
     switch(e.key) {
         case 'w': 
             ctx.drawImage(upArrow, 355, 10, imgWidth, imgHeight) 
