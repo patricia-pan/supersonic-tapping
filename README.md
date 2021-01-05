@@ -20,9 +20,15 @@ https://guides.github.com/features/mastering-markdown/
 ## Royalty-free music
  https://incompetech.com/music/royalty-free/music.html
 
-## Websites for designing wireframes
+### Websites for designing wireframes
 https://app.diagrams.net/
 figma.com
 
-## Credit for svg arrows
-http://ephraim-doorcounty.com/wp-content/uploads/intense-cache/icons/plugin/font-awesome/
+### Credit for DDR arrow image:
+https://www.deviantart.com/inkjuse/art/DDR-Arrow-111309080
+
+### Credit for background music.
+https://incompetech.filmmusic.io/song/7017-voxel-revolution
+
+### Credit for font:
+https://devilsworkshop.itch.io/pixel-font

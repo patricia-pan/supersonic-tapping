@@ -78,6 +78,10 @@ button {
     margin: 10px;
 }
 
+div#splash {
+    
+}
+
 div.result {
     background-color: grey;
     display: none;
