@@ -42,7 +42,8 @@ Use the a, s, w, d keys to press the arrows when they reach their placeholders a
 * Add 'win' and 'lose' logic and pop-up results
 * Arrow presses visually represented on screen 
 
-## Future Updates
+## Next Steps
+* Add pentatonic sounds for whenever you press any of the arrow keys.
 * Add splash screen before game starts
 * Add 'Restart' button to lose pop-up
 * Refactor game to be responsive using grid and have a minimum width
