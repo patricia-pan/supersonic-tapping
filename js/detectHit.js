@@ -26,10 +26,14 @@ let detectArrowHit = () => {
                 // }
                 // Below code didn't work, also had trouble doing string interpolation.
                 arrows[j].img.src = `./img/${arrows[j].direction}ArrowGhost.png`
-                healthScore += 1
+                if (healthScore < 100) { 
+                    healthScore += 1
+                }
             }
             else if (arrows[j].y <= 0) { // If the arrow has passed the hitBox + tolerance.
-            healthScore -= 1
+                if (healthScore >0) {
+                    healthScore -= 1
+                }
         }
     }
 }

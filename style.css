@@ -49,7 +49,7 @@ div#health-box {
 
 div#health {
     background-color: green;
-    border-radius: 3px;
+    border-radius: 3px 0px 0px 3px;
     height: 20px;
     margin-left: 0;
     width: 50px; /* Health starts off at 50%. */
@@ -76,4 +76,13 @@ aside#bottom {
 
 button {
     margin: 10px;
+}
+
+div.result {
+    background-color: grey;
+    display: none;
+    left: 33%; /* We use left because of our absolute position. */
+    position: absolute;
+    top: 45%; 
+    width: 33%;
 }

@@ -126,10 +126,10 @@ function Arrow(arrowDirection) { // To create new arrow objects from arrowDirect
 }
 
 function createArrow() { // Create arrow object from arrowDirections choreography.
-    for (let j = 0; j < arrowDirections[i].length; j++) {
-        arrows.push(new Arrow(arrowDirections[i][j]))
-    } 
-    if (i < arrowDirections.length - 1) {
+    if (i < arrowDirections.length) {
+        for (let j = 0; j < arrowDirections[i].length; j++) {
+            arrows.push(new Arrow(arrowDirections[i][j]))
+        } 
         i += 1 // Move on to the next choreographed arrowset. 
     }
 }
@@ -151,6 +151,9 @@ let gameLoop = () => {
     ctx.clearRect(0, 0, game.width, game.height) // Clear the canvas.
     removeOffScreenArrows() 
     // detectArrowHit()
+    if (healthScore > 98) {
+        health.style.borderRadius = '3px'
+    }
     health.style.width = healthScore + 'px' // Update health bar.
     hitBox.render()
     for (let j = 0; j < arrows.length; j++) { // Move up and draw each of the on-screen arrows.
