@@ -60,6 +60,11 @@ div#health {
     margin-left: 0;
     width: 50px; /* Health starts off at 50%. */
 }
+
+main {
+    font-family: 'Handlee', cursive;
+}
+
 canvas#game {
     background-color: #222;
     background-image: url('./img/cyberpunk-street.png');
@@ -84,10 +89,6 @@ button {
     border-radius: 5px;
     font-family: 'Bungee Shade', cursive;
     margin: 10px;
-}
-
-div#splash {
-    font-family: 'Handlee', cursive;
 }
 
 div.result {

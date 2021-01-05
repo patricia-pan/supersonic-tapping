@@ -148,7 +148,10 @@ let removeOffScreenArrows = () => {
 }
 
 let updateHealthBar = () => {
-    if (healthScore < 10) {
+    if (healthScore == 0) {
+        gameOver('lose')
+    }
+    else if (healthScore < 10) {
         health.style.backgroundColor = '#f55142'
         health.style.backgroundImage = 'none'
     }
@@ -167,13 +170,25 @@ let updateHealthBar = () => {
     else if (healthScore >= 75) {
         health.style.backgroundColor = '#42f5e6'
         health.style.backgroundImage = 'none'
-
     }
     if (healthScore > 98) {
         health.style.borderRadius = '3px'
-        health.style.backgroundImage = "url('./img/rainbow.gif')" // You get an animated rainbow at 100 health.
+        health.style.backgroundImage = "url('./img/water.gif')" // Animated water as a special reward.
     }
     health.style.width = healthScore + 'px' // Update health bar.
+}
+
+let gameOver = (result) => {
+    pause()
+    switch(result) {
+        case 'win': 
+            document.getElementById('win').style.display = 'block'
+            break
+        case 'lose':
+            document.getElementById('lose').style.display = 'block' 
+            console.log(lose)
+            break
+    }
 }
 
 let gameLoop = () => {
@@ -191,11 +206,14 @@ let gameLoop = () => {
             arrows[j].live = false
         }
     }
+    if (i == arrowDirections - 1 && arrows.length == 0) {
+        setInterval(gameOver(win), 1000) // End the game 1 seconds after the last arrow has left the screen.
+    }
 }
 
 // Use the below if you want a normal speed game: 
 let gameSpeed = 20 
-let arrowCreationSpeed = 60 * gameSpeed // Manually calibrated.
+let arrowCreationSpeed = 60 * gameSpeed // Create a new arrow every 1200ms, or 1.2 seconds. 60/1.2 = 50, so I use a song that's either 50, 100, or 150 bpm. 
 
 // Use the below if you want a faster game: 
 // let gameSpeed = 1  

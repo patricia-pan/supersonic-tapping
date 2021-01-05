@@ -24,6 +24,13 @@ figma.com
 ### Credit for DDR arrow image:
 https://www.deviantart.com/inkjuse/art/DDR-Arrow-111309080
 
+### Credit for water gif: 
+https://iblog.dearbornschools.org/vietinghoffpe/2017/05/22/last-week-to-swim-2/
+
+
+### Credit for pink sparkle gif: 
+https://giphy.com/gifs/reaction-mood-3d63YDxRJRtkZepvGm
+
 ### Credit for background music.
 https://incompetech.filmmusic.io/song/7017-voxel-revolution
 
