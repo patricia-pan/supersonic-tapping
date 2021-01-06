@@ -29,7 +29,7 @@ main, #health, #health-box { /* Hidden by splash screen. */
 }
 
 #container { /* For specifically just the container. */
-    background-color: pink;
+    background-color: orange;
     border: 1px dashed magenta;
     border-radius: 10px;
     margin: 0 auto; /* Centers everything inside the container, needs to be used with a width value. */
