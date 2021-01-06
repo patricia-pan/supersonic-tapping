@@ -17,31 +17,31 @@ let detectArrowHit = (direction) => {
 } 
 
 let hitHandler = e => {
-    let leftArrow = document.createElement('img')
-    let downArrow = document.createElement('img')
-    let upArrow = document.createElement('img')
-    let rightArrow = document.createElement('img')
+    let leftArrowActive = document.createElement('img')
+    let downArrowActive = document.createElement('img')
+    let upArrowActive = document.createElement('img')
+    let rightArrowActive = document.createElement('img')
     
-    leftArrow.src = './img/leftArrowActive.png'
-    downArrow.src = './img/downArrowActive.png'
-    upArrow.src = './img/upArrowActive.png'
-    rightArrow.src = './img/rightArrowActive.png'
+    leftArrowActive.src = './img/leftArrowActive.png'
+    downArrowActive.src = './img/downArrowActive.png'
+    upArrowActive.src = './img/upArrowActive.png'
+    rightArrowActive.src = './img/rightArrowActive.png'
     
     switch(e.key) {
         case 'w': 
-            ctx.drawImage(upArrow, 355, 10, imgWidth, imgHeight) 
+            ctx.drawImage(upArrowActive, 355, 10, imgWidth, imgHeight) 
             detectArrowHit('up')
             break
         case 'a': 
-            ctx.drawImage(leftArrow, 215, 10, imgWidth, imgHeight) 
+            ctx.drawImage(leftArrowActive, 215, 10, imgWidth, imgHeight) 
             detectArrowHit('left')
             break
         case 's':
-            ctx.drawImage(downArrow, 285, 10, imgWidth, imgHeight) 
+            ctx.drawImage(downArrowActive, 285, 10, imgWidth, imgHeight) 
             detectArrowHit('down')
             break
         case 'd': 
-            ctx.drawImage(rightArrow, 425, 10, imgWidth, imgHeight) 
+            ctx.drawImage(rightArrowActive, 425, 10, imgWidth, imgHeight) 
             detectArrowHit('right')
             break
         default: 

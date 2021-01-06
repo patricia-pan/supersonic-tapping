@@ -1,18 +1,9 @@
 // Assign dimensional attributes for canvas#game.
-game.setAttribute('width', getComputedStyle(game)['width'])
+game.setAttribute('width', getComputedStyle(game)['width']) // ID is game.
 game.setAttribute('height', getComputedStyle(game)['height'])
 
 // Context object gets created when we have the canvas tag.
 const ctx = game.getContext('2d')
-const leftArrowImg = document.getElementById('left-arrow')
-const downArrowImg = document.getElementById('down-arrow')
-const upArrowImg = document.getElementById('up-arrow')
-const rightArrowImg = document.getElementById('right-arrow')
-
-const leftArrowGhostImg = document.getElementById('left-arrow-ghost')
-const downArrowGhostImg = document.getElementById('down-arrow-ghost')
-const upArrowGhostImg = document.getElementById('up-arrow-ghost')
-const rightArrowGhostImg = document.getElementById('right-arrow-ghost')
 
 const imgHeight = 60 // img of DDR arrow. For reference, hitBox's height is 60px.
 const imgWidth = imgHeight // Square image. 
@@ -21,13 +12,12 @@ const song = document.createElement('audio')
 song.src = './audio/aerosol-of-my-love-by-kevin-macleod.mp3'
 song.volume = 0.1
 
-let arrows = [] // Array of arrow objects that are presently on screen. 
+let arrows = [] // Array of arrow objects that are live on screen. 
 let arrowDirections = [['up'], [], ['left'], ['up', 'right'], ['down'], ['up'], [], [], ['left'], ['left'], ['up', 'down'], [], ['right'], ['down'], [], ['up'], ['up','left'], ['up', 'right'], ['left'], ['left', 'right'], [],[], ['up'], ['left'], ['up', 'right'], ['down'], ['up', 'down'], ['left', 'right'], ['down'], ['down', 'right'], [], ['up'], ['left'], ['up', 'down']] //Hard-coded arrow choreography for each song + difficulty.
 let i = 0 // For reading choreography (to iterate through arrowDirections.)
 let healthScore = 50 // Out of 100.
 let health = document.getElementById('health')
 let isGameOver = false 
-
 
 let hitBox = {
     x: 10,
@@ -37,10 +27,15 @@ let hitBox = {
     margin: 10, 
     width: 680,
     render: function() {
-        let leftArrow = document.createElement('img')
-        let downArrow = document.createElement('img')
-        let upArrow = document.createElement('img')
-        let rightArrow = document.createElement('img')
+        // let leftArrow = document.createElement('img')
+        // let downArrow = document.createElement('img')
+        // let upArrow = document.createElement('img')
+        // let rightArrow = document.createElement('img')
+
+        let leftArrow = new Image() // Does the same thing as above, but new Image() is a built-in JavaScript constructor function. Thanks Barent!
+        let downArrow = new Image() 
+        let upArrow = new Image() 
+        let rightArrow = new Image() 
 
         leftArrow.src = './img/leftArrowGhost.png'
         downArrow.src = './img/downArrowGhost.png'
@@ -96,7 +91,7 @@ function Arrow(arrowDirection) { // To create new arrow objects from arrowDirect
         }
 }
 
-function createArrow() { // Create arrow object from arrowDirections choreography.
+function createArrow() { // Create live arrow object from arrowDirections choreography.
     if (i < arrowDirections.length) {
         for (let j = 0; j < arrowDirections[i].length; j++) {
             arrows.push(new Arrow(arrowDirections[i][j]))
@@ -181,7 +176,9 @@ let gameLoop = () => {
     }
     if (i >= arrowDirections.length && arrows.length == 0) {
         setTimeout(gameOver('win'), 5000) // End the game 5 seconds after the last arrow has left the screen.
-        // HAVING TROUBLE WITH THE ABOVE. CHANGING THE 5000 to 10000 DOESN'T AFFECT THE TIME.
+        // HAVING TROUBLE WITH THE ABOVE. CHANGING THE 5000 to 10000 DOESN'T AFFECT THE TIME. 
+        // Note from Barent: Adding a setTimeout in a game loop is really hard to accomplish, so instead you can create a global variable for keeping time.
+
     }
 }
 
@@ -202,6 +199,7 @@ let playSong = () => {
 }
 
 let start = () => { // Type 'start()' into Chrome console to start game.
+    splash.style.display = none
     arrowInterval = setInterval(createArrow, arrowCreationSpeed) 
     gameInterval = setInterval(gameLoop, gameSpeed) 
     setTimeout(playSong, 1200) // Offset the song start so that the choreography starts at a good spot.

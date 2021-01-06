@@ -16,7 +16,19 @@ h1 {
     color: #4e1c4e;
     background-color: rgb(254, 222, 227);
 }
-#container {
+
+div#splash {
+}
+
+div#container {
+}
+
+main, #health, #health-box { /* Hidden by splash screen. */
+    /* display: none; */
+    /* display: block */
+}
+
+#container { /* For specifically just the container. */
     background-color: pink;
     border: 1px dashed magenta;
     border-radius: 10px;
@@ -72,7 +84,7 @@ canvas#game {
     grid-area: game;
 }
 
-div#splash {
+div#instructions {
     font-family: 'Saira Semi Condensed', sans-serif;
 }
 

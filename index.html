@@ -21,21 +21,27 @@
 </head>
 <body>
     <h1>Super Ultra Mega Sonic Evolution Tapping of Keyboard™</h1>
+
+    <div id="splash"></div>
+
     <div id="container">
+        
         <aside id="top">
             <div id="health-box">
                 <div id="health"></div>
             </div>
-        </aside>
-        <main>
+        </aside>  
+        
+        <main>      
             <canvas id="game">
                 Game Canvas
             </canvas>
-            <div id="splash">Use the A, S, W, and D keys, respectively, to hit the arrows when they reach their placeholders at the top. <br><br>
+            <div id="instructions">Use the A, S, W, and D keys, respectively, to hit the arrows when they reach their placeholders at the top. <br><br>
                 Make sure your health on top doesn't go to zero — Good luck!</div>
             <div class="result" id="win">Congratulations, you've made it!! 🥳</div>
             <div class="result" id="lose">You missed too many arrows!! Be more careful next time. 🥵</div>
         </main>
+
         <aside id="bottom">
             <!-- Start button. -->
             <button id="start-button">Start</button>
@@ -43,6 +49,7 @@
             <!-- Pause button. -->
             <button id="pause-button">Pause</button>
         </aside>
-    </div>
+    
+    </div> 
 </body>
 </html>
