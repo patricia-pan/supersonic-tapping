@@ -165,7 +165,8 @@ let gameOver = (result) => {
 
 let gameLoop = () => {
     ctx.clearRect(0, 0, game.width, game.height) // Clear the canvas.
-    removeOffScreenArrows() 
+    removeOffScreenArrows()
+    if (healthScore >= 100) { healthScore = 100 } 
     updateHealthBar()
     hitBox.render()
     for (let j = 0; j < arrows.length; j++) { // Move up and draw each of the on-screen arrows.
