@@ -199,7 +199,7 @@ let playSong = () => {
 }
 
 let start = () => { // Type 'start()' into Chrome console to start game.
-    splash.style.display = none
+    splash.style.display = 'none'
     arrowInterval = setInterval(createArrow, arrowCreationSpeed) 
     gameInterval = setInterval(gameLoop, gameSpeed) 
     setTimeout(playSong, 1200) // Offset the song start so that the choreography starts at a good spot.
