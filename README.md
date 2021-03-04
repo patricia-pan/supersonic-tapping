@@ -4,7 +4,6 @@ Have you ever heard of Dance Dance Revolution (DDR), Tap Tap Revenge, or Beat Sa
 Fortunately for you, you've stumbled across Super Ultra Mega Sonic Tapping of Keyboard Evolution™, this generation's next big hit game amongst savvy Github gamers. 
 
 Be prepared to be blown away by:
-- How this game has a selective audience of those familiar with making pull requests from Github and opening files in their local server. 
 - The lightweight design of the application due to how everything was engineered in one page. 
 - The game's AI and quick ability to predict that you only want to play one song at one difficulty as soon as you click on the 'Start' button.
 
