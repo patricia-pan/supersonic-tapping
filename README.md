@@ -1,4 +1,4 @@
-# supersonic-tapping
+# [supersonic-tapping](https://trishapan.github.io/supersonic-tapping/)!
 Have you ever heard of Dance Dance Revolution (DDR), Tap Tap Revenge, or Beat Saber? If you have, then you would know that what's missing from that list is the next hit browser-based rhythm game! 
 
 Fortunately for you, you've stumbled across Super Ultra Mega Sonic Tapping of Keyboard Evolution™, this generation's next big hit game amongst savvy Github gamers. 
@@ -8,7 +8,7 @@ Be prepared to be blown away by:
 - The game's AI and quick ability to predict that you only want to play one song at one difficulty as soon as you click on the 'Start' button.
 
 ## Where to Play
-Click [me](https://patricia-pan.github.io/supersonic-tapping/)!
+Click [me](https://trishapan.github.io/supersonic-tapping/)!
 
 ## How to Play 
 Use the a, s, w, d keys to press the arrows when they reach their placeholders at the top of the screen. Hint: The timing is to the beat of the selected song!
