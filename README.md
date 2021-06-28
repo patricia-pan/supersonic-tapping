@@ -1,4 +1,4 @@
-# [supersonic-tapping](https://trishapan.github.io/supersonic-tapping/)!
+# [supersonic-tapping](https://trisha.github.io/supersonic-tapping/)!
 Have you ever heard of Dance Dance Revolution (DDR), Tap Tap Revenge, or Beat Saber? If you have, then you would know that what's missing from that list is the next hit browser-based rhythm game! 
 
 Fortunately for you, you've stumbled across Super Ultra Mega Sonic Tapping of Keyboard Evolution™, this generation's next big hit game amongst savvy Github gamers. 
